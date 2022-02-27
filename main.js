@@ -112,6 +112,7 @@ $("#tile1").focus()
 
 let tileId = "#tile"
 let wordGuess = ""
+let word = "horse"
 $(".guess").keydown(function(event){
     console.log(event.code)
     for(let i = 0; i <= invalidKeys.length; i++){
@@ -134,16 +135,45 @@ $(".guess").keydown(function(event){
             tileId += number
             console.log(tileId)
             $(tileId).focus()
+            // wordGuess.substring(wordGuess.length ,- 1)
+            wordGuess = wordGuess.replace(wordGuess[wordGuess.length - 1],' ')
+            wordGuess = wordGuess.replace(/^\s+|\s+$/gm,'')
+            console.log(wordGuess[wordGuess.length - 1], wordGuess)
         }
         if($(this).val() != ""){
             console.log(`"${$(this).val()}"`, tileId)
             wordGuess += $(this).val()
             $(tileId).focus()
         }
-        tileId = "#tile"
-        if(number%5 == 0){
-            return
+        // if(tileId == "#tile6" || tileId == "#tile11" || tileId == "#tile16" || tileId == "#tile21" || tileId == "#tile26"){
+        //     alert("Please Click Enter")
+        // }
+        if(event.keyCode == 13){
+            if(word == wordGuess){
+                console.log("Phew")
+                $("input").attr('disabled', 'disabled')
+            } else {
+                let letter = 0
+                let prvLetter = letter
+                while(letter != 5){
+                    prvLetter = letter
+                    if(word[letter] == wordGuess[letter]){
+                        console.log(`${word[letter]} is in the RIGHT SPOT`)
+                        // $(`input:contains(${word[letter]})`).css("color", "blue")
+                        $(`input:contains(${word[letter]})`).removeAttr('disabled');
+                        $( "input[value*='man']" ).val("has man in it!" );
+                    } else {
+                        for(let i = 0; i <= 5; i++){
+                            if(word[prvLetter] == wordGuess[i]){
+                                console.log(`${word[prvLetter]} is in the WORD but in the WRONG SPOT`)
+                            }
+                        }
+                    }
+                    letter ++
+                }
+            }
         }
+        tileId = "#tile"
     }, 20)
     if(event.keyCode == 13){
         console.log(wordGuess)
