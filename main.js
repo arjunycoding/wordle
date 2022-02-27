@@ -20,7 +20,8 @@ let invalidKeys = [
     190,
     191,
     189,
-    187
+    187,
+    32
 ]
 $("#tile1").focus()
 // let id = "#guess"
@@ -113,7 +114,17 @@ let tileId = "#tile"
 let wordGuess = ""
 $(".guess").keydown(function(event){
     console.log(event.code)
+    for(let i = 0; i <= invalidKeys.length; i++){
+                if(invalidKeys[i] == event.keyCode){
+                    event.preventDefault()
+                    console.log(invalidKeys[i])
+                }
+            }
     let number = (parseInt($(this).attr("id")[4]) + 1).toString()
+    if($(this).attr("id").length > 4){
+        number = (parseInt($(this).attr("id").slice(4, 6)) + 1).toString()
+        console.log(number)
+    }
     setTimeout(() => {
         console.log(number)
         tileId += number
@@ -130,6 +141,9 @@ $(".guess").keydown(function(event){
             $(tileId).focus()
         }
         tileId = "#tile"
+        if(number%5 == 0){
+            return
+        }
     }, 20)
     if(event.keyCode == 13){
         console.log(wordGuess)
