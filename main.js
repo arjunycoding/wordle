@@ -137,7 +137,6 @@ $(".guess").keydown(function(event){
             $(tileId).focus()
             // wordGuess.substring(wordGuess.length ,- 1)
             wordGuess = wordGuess.replace(wordGuess[wordGuess.length - 1],' ')
-            wordGuess = wordGuess.replace(/^\s+|\s+$/gm,'')
             console.log(wordGuess[wordGuess.length - 1], wordGuess)
         }
         if($(this).val() != ""){
