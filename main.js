@@ -30,7 +30,9 @@ function getVal(selctor) {
 }
 let tileId = "#tile"
 let wordGuess = ""
-let word = "horse"
+// let word = "horse"
+let word = words[Math.floor(Math.random() * words.length)]
+console.log(word)
 let rowClass = "#guess1"
 $(".guess").keydown(function(event){
     for(let i = 0; i <= invalidKeys.length; i++){
@@ -42,7 +44,7 @@ $(".guess").keydown(function(event){
     if($(this).attr("id").length > 4){
         number = (parseInt($(this).attr("id").slice(4, 6)) + 1).toString()
     }
-    let validate = setTimeout(() => {
+    setTimeout(() => {
         tileId += number
         //  --- DELETE KEY ----------
         if(event.keyCode == 8){
@@ -65,9 +67,9 @@ $(".guess").keydown(function(event){
         if(tileId == "#tile6" || tileId == "#tile11" || tileId == "#tile16" || tileId == "#tile21" || tileId == "#tile26"){
             if(event.keyCode){
                     event.preventDefault()
+                    return false
             }
-            alert("Please Click Enter")
-            event.preventDefault()
+            alert("CLICK ENTER")
         }
 
         // ----ENTER KEY-----------
