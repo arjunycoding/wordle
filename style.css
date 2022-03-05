@@ -19,3 +19,19 @@ table{
 input[type="text"][disabled] {
     background: inherit;
 }
+
+.rightPlace{
+    background-color: green;
+}
+
+.wrongPlace{
+    background-color: yellow;
+}
+
+.gray{
+    background-color: gray;
+}
+
+input:focus{
+    border: 5px solid black;
+}

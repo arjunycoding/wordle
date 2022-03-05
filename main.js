@@ -28,95 +28,10 @@ function getVal(selctor) {
     const value = document.querySelector(selctor).value;
     console.log(value);
 }
-// let id = "#guess"
-// let innerHtml = ""
-// let word = (words[Math.floor(Math.random() * words.length)].toString()).toLocaleLowerCase()
-// let guesses = 1
-// let letter = 0
-// let prvLetter = 1
-// let letterId = "#letter"
-// $(".guess").keydown(function (event) {
-//     // guessingStr = ""
-//     if(event.keyCode == 13){
-//         console.log(word)
-//         let guess = $(this).val()
-//         console.log($(this))
-//         if(guess){
-//             if(word == guess){
-//                 innerHtml = `you're right!`
-//                 $(this).attr('disabled', 'disabled');
-//                 $(".correntWord").html(innerHtml)
-//                 $(".letter").css('background-color', 'green')
-//                 return
-//             } else {
-//                 for(let i = 0; i < guess.length; i++){
-//                     let letterNumber = letter.toString()
-//                     letterId += letterNumber
-//                     if(guess[i] == word[i]){
-//                         innerHtml += `${guess[i]} is in the right place <br/> `
-//                         $(letterId).css('background-color', 'green')
-                        
-//                     } else {
-//                         letter = letter
-//                         prvLetter = letter
-//                         while(letter != 5){
-//                             j = 0
-//                             letterId = "#letter"
-//                             letter++
-//                             letterNumber = letter.toString()
-//                             letterId += letterNumber
-//                             let curLetter = guess[i]
-//                             j++
-//                             if(curLetter == word[j]){
-//                                 innerHtml += `${curLetter} is IN the word but NOT in the RIGHT spot <br/> `
-//                                 $(letterId).css('background-color', 'yellow');
-//                                 break
-//                             } else {
-//                                 innerHtml += `${guess[i]} is not in the word <br/> `
-//                                 $(letterId).css('background-color', 'gray');
-//                                 break
-//                             }
-//                         }
-//                     }
-//                     letter = prvLetter
-//                     console.log(letterId)
-//                     letter++
-//                     letterId = "#letter"
-//                 }
-//             }
-//             // $(this).attr('disabled', 'disabled');
-//             // $(".currentGuess").next("input").removeAttr("disabled").addClass("currentGuess")
-            
-//             // console.log(this)
-//             // $(this).removeClass("currentGuess")
-//             let number = (parseInt($(this).attr("id")[5]) + 1).toString()
-//             id += number
-//             $(id).removeAttr("disabled")
-//             $(id).focus();
-//             $(this).attr('disabled', 'disabled');
-//             console.log(id, number, guesses)
-//             id = "#guess"
-//             $(".correntWord").html(innerHtml)
-//             guesses++
-//             if(guesses == 6){
-//                 $(".correntWord").html(`The word was ${word}`)
-//             }
-//             innerHtml = ""
-//         } else {
-//             console.log("Enter Something!")
-//         }
-//     }
-//     for(let i = 0; i <= invalidKeys.length; i++){
-//         if(invalidKeys[i] == event.keyCode){
-//             event.preventDefault()
-//             console.log(invalidKeys[i])
-//         }
-//     }
-// });
-
 let tileId = "#tile"
 let wordGuess = ""
 let word = "horse"
+let rowClass = "#guess1"
 $(".guess").keydown(function(event){
     for(let i = 0; i <= invalidKeys.length; i++){
                 if(invalidKeys[i] == event.keyCode){
@@ -127,7 +42,7 @@ $(".guess").keydown(function(event){
     if($(this).attr("id").length > 4){
         number = (parseInt($(this).attr("id").slice(4, 6)) + 1).toString()
     }
-    setTimeout(() => {
+    let validate = setTimeout(() => {
         tileId += number
         //  --- DELETE KEY ----------
         if(event.keyCode == 8){
@@ -154,42 +69,48 @@ $(".guess").keydown(function(event){
             alert("Please Click Enter")
             event.preventDefault()
         }
+
+        // ----ENTER KEY-----------
         if(event.keyCode == 13){
-            if(word == wordGuess){
-                alert("Phew")
-                $("input").attr('disabled', 'disabled')
-            } else {
-                let letter = 0
-                let prvLetter = letter
-                while(letter != 5){
-                    prvLetter = letter
-                    if(word[letter] == wordGuess[letter]){
-                        console.log(`${word[letter]} is in the RIGHT SPOT`)
-                        // console.log($(`input:contains('h')`))
-                        // $( "input[value*='h']" ).css("color", "green")
-                        // $('.guess').find(`input[value='"${word[letter]}"']`).css("background", "green")
-                        // console.log($('.guess').find(`input[value='"${word[letter]}"']`).css())
-                        // $(`input[value="'${word[letter]}'"]`).remove()
-                        $(`input[value*="${word[letter]}"]`).css("background-color","blue");
-                        console.log(word[letter], typeof(word[letter]))
-                        // console.log(getVal('#tile1'))
-                        // if(getVal('#tile1'))
-
+            fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordGuess}`)
+            .then(res => res.json())
+            .then(res => {
+                if(res.title == 'No Definitions Found'){
+                    $(rowClass).last().focus()
+                    console.log(rowClass)
+                } else {
+                    
+                    if(word == wordGuess){
+                        alert("Phew")
+                        $("input").attr('disabled', 'disabled')
                     } else {
-                        for(let i = 0; i <= 5; i++){
-                            if(word[prvLetter] == wordGuess[i]){
-                                console.log(`${word[prvLetter]} is in the WORD but in the WRONG SPOT`)
+                        let letter = 0
+                        let prvLetter = letter
+                        while(letter != 5){
+                            prvLetter = letter
+                            if(word[letter] == wordGuess[letter]){
+                                console.log(`${word[letter]} is in the RIGHT SPOT`)
+                                $(`#tile${letter + 1}`).addClass("rightPlace")
+                                console.log(word[letter], typeof(word[letter]))
+                                
+                            } else {
+                                for(let i = 0; i <= 5; i++){
+                                    if(word[prvLetter] == wordGuess[i]){
+                                        console.log(`${word[prvLetter]} is in the WORD but in the WRONG SPOT`)
+                                        $(`#tile${letter + 1}`).addClass("wrongPlace")
+                                    } else {
+                                        $(`#tile${letter + 1}`).addClass("gray")
+                                    }
+                                }
                             }
+                            letter ++
                         }
+                        $(rowClass).attr('disabled', 'disabled');
                     }
-                    letter ++
                 }
-
-            }
+                rowClass = `#guess${(parseInt(rowClass[6]) + 1).toString()}`
+            })
         }
         tileId = "#tile"
     }, 20)
-    if(event.keyCode == 13){
-        console.log(wordGuess)
-    }
 })
