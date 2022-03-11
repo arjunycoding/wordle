@@ -1,6 +1,6 @@
 .guess {
   margin: 5px;
-  width: 50px;
+  width: 100px;
   height: 50px;
   caret-color: transparent;
   pointer-events: none;
@@ -52,3 +52,11 @@ input:focus {
 .shake {
   transform: translateX(20px);
 }
+
+#fiesta {
+  width:100%; 
+  height:100%;
+  }
+  
+  
+  
