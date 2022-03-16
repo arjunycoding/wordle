@@ -1,7 +1,4 @@
 let words = [
-    "horse", "crane", "brain", "brick", "audio", "green", "reeds", "after", "maple", "nasty"
-]
-words = [
     "about",
     "above",
     "abuse",
@@ -502,5 +499,5 @@ words = [
     "yield",
     "young",
     "youth"
-
 ]
+//words = ["horse", "crane", "brain", "brick", "audio", "green", "reeds", "after", "maple", "nasty"]
