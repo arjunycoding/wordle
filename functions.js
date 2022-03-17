@@ -16,14 +16,20 @@ function checkWord(enteredWord, actualWord) {
         }
     } else {
         let positions = []
+        let checkedLetters = []
         for (let i = 0; i < enteredWord.length; i++) {
-            if (enteredWord[i] == actualWord[i]) {
-                positions.push("right")
-            } else if (actualWord.includes(enteredWord[i])) {
-                positions.push("exists")
+            if (!checkedLetters.includes(enteredWord[i])) {
+                if (enteredWord[i] == actualWord[i]) {
+                    positions.push("right")
+                } else if (actualWord.includes(enteredWord[i])) {
+                    positions.push("exists")
+                } else {
+                    positions.push("wrong")
+                }
             } else {
                 positions.push("wrong")
             }
+            checkedLetters.push(enteredWord[i])
         }
         return {
             "result": false,
@@ -72,21 +78,45 @@ function extractTileNumber(inputId) {
     let numberString = inputId.length > 4 ? inputId.slice(4, 6) : inputId[4]
     return parseInt(numberString)
 }
+function keyClicked(inputId, clickedKeyId) {
+    let addValue = $(clickedKeyId).text()
+    $(`#${inputId}`).val(addValue)
+    console.log(inputId, $(clickedKeyId).text())
+}
 
-// console.log(checkWord('horse', 'crane'))
-// console.log(checkWord('HORSE', 'crane'))
-// console.log(checkWord('crane', 'crane'))
-// console.log(checkWord('zzzzz', 'crane'))
-
-// console.log(extractTileNumber("1"))
-// console.log(extractTileNumber("10"))
-
-// console.log(getNextTile("tile1"))
-// console.log(getNextTile("tile10"))
-
-// isRealWord("asdfasd").then((result) => {
-//     console.log(result)
-// })
-// isRealWord("crane").then((result) => {
-//     console.log(result)
-// })
+function getKeyCode(letter) {
+    let letters = {
+        "a": 65,
+        "b": 66,
+        "c": 67,
+        "d": 68,
+        "e": 69,
+        "f": 70,
+        "g": 71,
+        "h": 72,
+        "i": 73,
+        "j": 74,
+        "k": 75,
+        "l": 76,
+        "m": 77,
+        "n": 78,
+        "o": 79,
+        "p": 80,
+        "q": 81,
+        "r": 82,
+        "s": 83,
+        "t": 84,
+        "u": 85,
+        "v": 86,
+        "w": 87,
+        "x": 88,
+        "y": 89,
+        "z": 90
+    }
+    for (const [key, value] of Object.entries(letters)) {
+        console.log(key, value)
+        if (key == letter) {
+            return value
+        }
+    }
+}

@@ -7,18 +7,19 @@ let word = words[Math.floor(Math.random() * words.length)]
 console.log(word)
 $(".message").hide()
 $("#tile1").focus()
-$(".guess").keydown(function (event) {
-    let inputId = $(this).attr("id")
-    if (validKeys.includes(event.keyCode)) {
-        $(`#${inputId}`).val(event.key)
-        if (shouldMoveTile(inputId)) {
-            let nextTile = getNextTile(inputId)
-            $(`#${nextTile}`).focus()
-        } else {
-            $("#nextTile").val(extractTileNumber(inputId) + 1)
-            $("#hiddenTile").focus()
-        }
-    } else if (event.keyCode == 13 && inputId == "hiddenTile") { // ENTER Key pressed
+let inputId = $(this).attr("id")
+function everything(keyPressed, keyCode, element) {
+    let inputId = $(element).attr("id")
+    $(`#${inputId}`).val(keyPressed)
+    if (shouldMoveTile(inputId)) {
+        let nextTile = getNextTile(inputId)
+        $(`#${nextTile}`).focus()
+    } else {
+        $("#nextTile").val(extractTileNumber(inputId) + 1)
+        $("#hiddenTile").focus()
+    }
+    if (validKeys.includes(keyCode)) {
+    } else if (keyCode == 13 && inputId == "hiddenTile") { // ENTER Key pressed
         let number = parseInt($("#nextTile").val()) - 1
         let enteredWord = extractWord(number)
         let result = checkWord(enteredWord, word)
@@ -79,12 +80,12 @@ $(".guess").keydown(function (event) {
 
         }
 
-    } else if (event.keyCode == 8) { // DELETE key pressed
+    } else if (keyCode == 8) { // DELETE key pressed
         //TODO: empty current val if already in one of the input tiles 🟩
-        $(this).val("")
+        $(element).val("")
         //TODO: if the current inputId is hiddenTile  🟩
         //     then we have to use nextTile to find while tiles to delete the values from
-        if ($(this).attr("id") == "hiddenTile") {
+        if ($(element).attr("id") == "hiddenTile") {
             $(`#tile${$("#nextTile").val() - 1}`).val("").focus()
 
         }
@@ -94,4 +95,43 @@ $(".guess").keydown(function (event) {
     } else {
         event.preventDefault()
     }
+}
+$(".guess").keydown(function (event) {
+    everything(event.key, event.keyCode, this)
+    everything()
+})
+let letters = {
+    "a": 65,
+    "b": 66,
+    "c": 67,
+    "d": 68,
+    "e": 69,
+    "f": 70,
+    "g": 71,
+    "h": 72,
+    "i": 73,
+    "j": 74,
+    "k": 75,
+    "l": 76,
+    "m": 77,
+    "n": 78,
+    "o": 79,
+    "p": 80,
+    "q": 81,
+    "r": 82,
+    "s": 83,
+    "t": 84,
+    "u": 85,
+    "v": 86,
+    "w": 87,
+    "x": 88,
+    "y": 89,
+    "z": 90
+}
+$(".key").on("click", function () {
+    // keyClicked("test", this)\keyClicked()
+    // let key =
+    everything($(this).text(), getKeyCode($(this).text()), $(":focus"))
+    // getKey()
+    console.log(getKeyCode("a"))
 })

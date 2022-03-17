@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&display=swap');.guess {
+@import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&display=swap');
+.guess {
   margin: 5px;
   width: 50px;
   height: 50px;
   caret-color: transparent;
-  pointer-events: none;
+  /* pointer-events: none; */
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
