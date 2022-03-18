@@ -111,12 +111,9 @@ function getKeyCode(letter) {
         "w": 87,
         "x": 88,
         "y": 89,
-        "z": 90
+        "z": 90,
+        "enter": 13,
+        "delete": 8
     }
-    for (const [key, value] of Object.entries(letters)) {
-        console.log(key, value)
-        if (key == letter) {
-            return value
-        }
-    }
+    return letters[letter.toLowerCase()]
 }
