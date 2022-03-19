@@ -45,6 +45,7 @@ async function isRealWord(wordToCheck) {
     return await result.title != "No Definitions Found"
 }
 
+
 function extractWord(tileNumber) {
     if (tileNumber % 5 == 0) { //extract only when at the end tile for the word
         let enteredWord = ""
@@ -57,6 +58,7 @@ function extractWord(tileNumber) {
     return ""
 }
 
+
 function shouldMoveTile(inputId) {
     if (extractTileNumber(inputId) % 5 == 0) {
         return false
@@ -64,25 +66,31 @@ function shouldMoveTile(inputId) {
     return true
 }
 
+
 function getNextTile(inputId) {
     let number = extractTileNumber(inputId)
     return inputId.slice(0, 4) + (number + 1)
 }
+
 
 function getPreviousTile(inputId) {
     let number = extractTileNumber(inputId)
     return inputId.slice(0, 4) + (number - 1)
 }
 
+
 function extractTileNumber(inputId) {
     let numberString = inputId.length > 4 ? inputId.slice(4, 6) : inputId[4]
     return parseInt(numberString)
 }
+
+
 function keyClicked(inputId, clickedKeyId) {
     let addValue = $(clickedKeyId).text()
     $(`#${inputId}`).val(addValue)
     console.log(inputId, $(clickedKeyId).text())
 }
+
 
 function getKeyCode(letter) {
     let letters = {

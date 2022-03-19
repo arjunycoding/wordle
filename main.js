@@ -12,7 +12,8 @@ let inputId = $(this).attr("")
 function everything(keyPressed, keyCode, element, event = null) {
     let currentTile = parseInt($("#currentTile").val())
     let inputId = currentTile < 1 ? "hiddenTile" : "tile" + currentTile
-    console.log(currentTile, keyCode, inputId, "kc and inputId")
+    let nextTileNumber = parseInt($("#nextTile").val())
+    console.log(currentTile, keyCode, inputId, "currentTile, kc and inputId")
     if (validKeys.includes(keyCode) && inputId != "hiddenTile") {
         $(`#${inputId}`).val(keyPressed)
         if (shouldMoveTile(inputId)) {
@@ -21,6 +22,7 @@ function everything(keyPressed, keyCode, element, event = null) {
             currentTile += 1
         } else {
             $("#nextTile").val(extractTileNumber(inputId) + 1)
+            console.log("finished row - setting focus to hiddenTile")
             $("#hiddenTile").focus()
             currentTile = 0
         }
@@ -48,10 +50,12 @@ function everything(keyPressed, keyCode, element, event = null) {
 
                         //TODO: go ahead and mark the cells with the right color 🟩
                         //TODO: right: green, exists: yellow, wrong: grey 🟩
-                        let nextTileNumber = parseInt($("#nextTile").val())
+
                         let i = nextTileNumber - 5
                         result.positions.forEach((value) => {
                             $(`#tile${i}`).addClass(value).attr("disabled", "disabled")
+                            // console.log(($(`#tile${i}`).val()).toUpperCase())
+                            // $(`.key:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass(value)
                             i++
                         })
 
@@ -66,29 +70,32 @@ function everything(keyPressed, keyCode, element, event = null) {
                         }
                     } else {
                         //TODO: if it is not a real word - do nothing 🟩
-                        let i = $("#nextTile").val() - 1
-                        let stopat = i - 5
-                        for (; i > stopat; i--) {
-                            $(`#tile${i}`).val("").focus()
-                            $(".alert-danger").fadeIn(1000).text("Not a word")
-                            setTimeout(() => {
-                                $(".alert-danger").fadeOut(1000)
-                            }, 3000)
-                        }
+
+                        console.log("nw setting the focus to tile" + nextTileNumber)
+                        $(`#tile${nextTileNumber}`).focus()
+                        $(".alert-danger").fadeIn(1000).text("Not a word")
+                        setTimeout(() => {
+                            $(".alert-danger").fadeOut(1000)
+                        }, 3000)
                     }
                 })
         }
     } else if (keyCode == 8) { // DELETE key pressed
         //TODO: empty current val if already in one of the input tiles 🟩
-        $(element).val("")
+        console.log("Delete key is pressed with " + inputId, nextTileNumber)
         //TODO: if the current inputId is hiddenTile  🟩
         //     then we have to use nextTile to find while tiles to delete the values from
-        if ($(element).attr("id") == "hiddenTile") {
-            $(`#tile${$("#nextTile").val() - 1}`).val("").focus()
+        if (inputId == "hiddenTile") {
+            $(`#tile${nextTileNumber - 1}`).val("")
+            $(`#tile${nextTileNumber - 1}`).focus()
+            $("#currentTile").val((nextTileNumber - 1))
+        } else {
+            $(`#tile${currentTile}`).val("")
+            $(`#tile${currentTile - 1}`).val("")
+            $(`#tile${currentTile - 1}`).focus()
+            $("#currentTile").val((currentTile - 1))
+            // $("#nextTile").val((nextTileNumber - 5))
         }
-        //move to previous
-        let prevTile = getPreviousTile(inputId)
-        $(`#${prevTile}`).val("").focus()
     } else {
         if (event) {
             event.preventDefault()
@@ -100,6 +107,6 @@ $(".guess").keydown(function (event) {
 })
 
 $(".key").on("click", function (event) {
-    let letter = $(this).text()
+    let letter = $(this).val()
     everything(letter, getKeyCode(letter))
 })
