@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&display=swap');
+body{
+  padding: 10px;
+}
 .guess {
   margin: 5px;
   width: 50px;
@@ -13,7 +16,7 @@
 }
 .heading{
   font-family: 'Cuprum';
-  margin: auto !important;
+  text-align: center;
 }
 #hiddenTile {
   height: 0px;
@@ -59,17 +62,21 @@ input:focus {
   margin: auto;
 }
   
-.key{
+.letter{
   border:none;
   background-color: #c9c9c9;
-  width: 45px !important;
+  width: 45px;
   height: 45px;
   margin: 5px;
   border-radius: 5px;
 }
  
 .enter, .delete{
-  width: 75px !important;
+  width: 75px;
+  border:none;
+  background-color: #c9c9c9;  height: 45px;
+  margin: 5px;
+  border-radius: 5px;
 }
 svg{
   width: 45px;
@@ -78,3 +85,15 @@ svg{
   margin-left: 20px;
 }
 
+.keyboard{
+  text-align: center;
+}
+@media only screen and (max-width: 625px) {
+  .letter {
+    width: 6%;
+    margin: 2px !important;
+  }
+  .enter, .delete{
+    width: 15%;
+  }
+}

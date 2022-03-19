@@ -33,7 +33,7 @@ function everything(keyPressed, keyCode, element, event = null) {
         let result = checkWord(enteredWord, word)
         console.log("ENTER key pressed")
         if (result.result) { // when the guess is right
-            //TODO: go ahead and mark all cells green and 
+
             let i = $("#nextTile").val() - 1
             let stopat = i - 5
             for (; i > stopat; i--) {
@@ -43,19 +43,34 @@ function everything(keyPressed, keyCode, element, event = null) {
             pop()
             $("input").attr("disabled", "disabled")
         } else { // when the guess is wrong
-            //TODO: check if the word is real 🟩
             isRealWord(enteredWord)
                 .then((isReal) => {
                     if (isReal) {
 
-                        //TODO: go ahead and mark the cells with the right color 🟩
-                        //TODO: right: green, exists: yellow, wrong: grey 🟩
-
                         let i = nextTileNumber - 5
                         result.positions.forEach((value) => {
-                            $(`#tile${i}`).addClass(value).attr("disabled", "disabled")
-                            // console.log(($(`#tile${i}`).val()).toUpperCase())
-                            // $(`.key:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass(value)
+                            $(`#tile${i}`)
+                                .attr('disabled', true)
+                                .attr('readonly', true)
+                                .addClass(value)
+                            console.log(($(`#tile${i}`).val()).toUpperCase())
+                            // Add Keyboard Colors
+                            if (value == "right") { 
+                                $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
+                                if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("exists")) {
+                                    $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).removeClass("exists")
+                                }
+                            }
+                            if (value == "exists") {
+                                if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("right")) {
+
+                                } else {
+                                    $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("exists")
+                                }
+                            }
+                            if (value == "wrong") {
+                                $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("wrong")
+                            }
                             i++
                         })
 
@@ -64,12 +79,12 @@ function everything(keyPressed, keyCode, element, event = null) {
                         $("#currentTile").val(nextTileNumber)
                         $(nextTile).focus()
 
-                        //TODO: if last cell - end the game with a sad face 🟩
+
                         if (nextTile == "#tile31") {
                             $(".alert-primary").fadeIn(1500).text("You did not get the word 😟. The word was " + word)
                         }
                     } else {
-                        //TODO: if it is not a real word - do nothing 🟩
+
 
                         console.log("nw setting the focus to tile" + nextTileNumber)
                         $(`#tile${nextTileNumber}`).focus()
@@ -81,9 +96,9 @@ function everything(keyPressed, keyCode, element, event = null) {
                 })
         }
     } else if (keyCode == 8) { // DELETE key pressed
-        //TODO: empty current val if already in one of the input tiles 🟩
+
         console.log("Delete key is pressed with " + inputId, nextTileNumber)
-        //TODO: if the current inputId is hiddenTile  🟩
+
         //     then we have to use nextTile to find while tiles to delete the values from
         if (inputId == "hiddenTile") {
             $(`#tile${nextTileNumber - 1}`).val("")
@@ -94,7 +109,7 @@ function everything(keyPressed, keyCode, element, event = null) {
             $(`#tile${currentTile - 1}`).val("")
             $(`#tile${currentTile - 1}`).focus()
             $("#currentTile").val((currentTile - 1))
-            // $("#nextTile").val((nextTileNumber - 5))
+
         }
     } else {
         if (event) {
@@ -106,7 +121,7 @@ $(".guess").keydown(function (event) {
     everything(event.key, event.keyCode, this, event)
 })
 
-$(".key").on("click", function (event) {
+$(".letter").on("click", function (event) {
     let letter = $(this).val()
     everything(letter, getKeyCode(letter))
 })
