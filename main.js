@@ -127,5 +127,5 @@ $(".letter").on("click", function (event) {
 })
 
 $("#share").on("click", function () {
-    copyText(text)
+    text.copyText(text)
 })
