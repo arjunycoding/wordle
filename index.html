@@ -14,6 +14,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="wordle.png">
+
 </head>
 
 <body>
@@ -23,9 +25,7 @@
             <input autocomplete="off" readonly type="text" id="hiddenTile" class="guess">
             <input autocomplete="off" readonly type="hidden" id="nextTile">
             <input autocomplete="off" readonly type="hidden" id="currentTile">
-            <!-- <template autocomplete="off" type="text" id="textMessage"><button>Copy</button> -->
-            <textarea id="textMessage" readonly name="story" rows="5" cols="33">
-                </textarea>
+            <textarea id="textMessage" readonly name="story" rows="5" cols="33"></textarea>
         </div>
         <div class="alert alert-danger message" id="error" role="alert">
 

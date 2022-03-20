@@ -41,7 +41,7 @@ function everything(keyPressed, keyCode, element, event = null) {
             $("input").attr("disabled", "disabled")
             $('#modal').click()
             $(".modal-body").html(
-                `You Got It!<br> The word was ${word}<br> Here is your attempt: <br> ${text}`
+                `You Got It!<br> The word was ${word}<br> Here is your attempt: <br> ${displayText}`
             )
         } else { // when the guess is wrong
             isRealWord(enteredWord)
@@ -50,9 +50,8 @@ function everything(keyPressed, keyCode, element, event = null) {
 
                         let i = nextTileNumber - 5
                         result.positions.forEach((value) => {
-                            $(`#tile${i}`)
-                                .attr('disabled', true)
-                                .addClass(value)
+                            $(`#tile${i}`).addClass(value)
+                            $(`#tile${i}`).prop('disabled', true)
                             document.getElementById(`tile${i}`).readOnly = true
                             // Add Keyboard Colors
                             if (value == "right") {
@@ -80,8 +79,8 @@ function everything(keyPressed, keyCode, element, event = null) {
                             i++
                         })
                         text += "\n"
+                        displayText += "<br>"
                         $("#textMessage").val(text)
-                        console.log(text)
 
                         //proceed to the next row: 
                         let nextTile = "#tile" + nextTileNumber
@@ -93,8 +92,6 @@ function everything(keyPressed, keyCode, element, event = null) {
                             $(".alert-primary").fadeIn(1500).text("You did not get the word 😟. The word was " + word)
                         }
                     } else {
-
-
                         $(`#tile${nextTileNumber}`).focus()
                         $(".alert-danger").fadeIn(1000).text("Not a word")
                         setTimeout(() => {
@@ -105,7 +102,9 @@ function everything(keyPressed, keyCode, element, event = null) {
         }
     } else if (keyCode == 8) { // DELETE key pressed
         //     then we have to use nextTile to find while tiles to delete the values from
-        if (inputId == "hiddenTile") {
+        if (inputId == "tile6" || inputId == "tile11" || inputId == "tile16" || inputId == "tile21" || inputId == "tile24") {
+            
+        } else if (inputId == "hiddenTile") {
             $(`#tile${nextTileNumber - 1}`).val("")
             $(`#tile${nextTileNumber - 1}`).focus()
             $("#currentTile").val((nextTileNumber - 1))
@@ -128,7 +127,6 @@ $(".guess").keydown(function (event) {
 
 $(".letter").on("click", function (event) {
     let letter = $(this).val()
-    console.log(letter)
     everything(letter, getKeyCode(letter))
 })
 
