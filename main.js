@@ -40,7 +40,7 @@ function everything(keyPressed, keyCode, element, event = null) {
             $("input").attr("disabled", "disabled")
             $('#modal').click()
             $(".modal-body").html(
-                `You Got It!<br> The word was ${word}<br> Here is you attemps: <br> ${text}`
+                `You Got It!<br> The word was ${word}<br> Here is your attemp: <br> ${text}`
             )
         } else { // when the guess is wrong
             isRealWord(enteredWord)
@@ -54,7 +54,7 @@ function everything(keyPressed, keyCode, element, event = null) {
                                 .addClass(value)
                             document.getElementById(`tile${i}`).readOnly = true
                             // Add Keyboard Colors
-                            if (value == "right") { 
+                            if (value == "right") {
                                 text += "🟩"
                                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
                                 if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("exists")) {
