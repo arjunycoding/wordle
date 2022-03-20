@@ -20,11 +20,11 @@
     <h1 class="heading">Wordle</h1>
     <div>
         <div id="hiddenDiv">
-            <input autocomplete="off" type="text" id="hiddenTile" class="guess">
-            <input autocomplete="off" type="hidden" id="nextTile">
-            <input autocomplete="off" type="hidden" id="currentTile">
+            <input autocomplete="off" readonly type="text" id="hiddenTile" class="guess">
+            <input autocomplete="off" readonly type="hidden" id="nextTile">
+            <input autocomplete="off" readonly type="hidden" id="currentTile">
             <!-- <template autocomplete="off" type="text" id="textMessage"><button>Copy</button> -->
-            <textarea id="textMessage" name="story" rows="5" cols="33">
+            <textarea id="textMessage" readonly name="story" rows="5" cols="33">
                 </textarea>
         </div>
         <div class="alert alert-danger message" id="error" role="alert">

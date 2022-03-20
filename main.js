@@ -5,6 +5,7 @@ for (let i = 65; i <= 90; i++) { //all alphabets
 $('#modal').hide()
 let word = words[Math.floor(Math.random() * words.length)]
 let text = ""
+let displayText = ""
 $(".message").hide()
 $("#tile1").focus()
 $("#currentTile").val("1")
@@ -56,6 +57,7 @@ function everything(keyPressed, keyCode, element, event = null) {
                             // Add Keyboard Colors
                             if (value == "right") {
                                 text += "🟩"
+                                displayText += "🟩"
                                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
                                 if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("exists")) {
                                     $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).removeClass("exists")
@@ -63,6 +65,7 @@ function everything(keyPressed, keyCode, element, event = null) {
                             }
                             if (value == "exists") {
                                 text += "🟨"
+                                displayText += "🟨"
                                 if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("right")) {
 
                                 } else {
@@ -71,6 +74,7 @@ function everything(keyPressed, keyCode, element, event = null) {
                             }
                             if (value == "wrong") {
                                 text += "⬛"
+                                displayText += "⬛"
                                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("wrong")
                             }
                             i++
