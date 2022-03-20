@@ -2,9 +2,9 @@ let validKeys = [] //backspace & enter
 for (let i = 65; i <= 90; i++) { //all alphabets
     validKeys.push(i)
 }
-
+$('#modal').hide()
 let word = words[Math.floor(Math.random() * words.length)]
-console.log(word)
+let text = ""
 $(".message").hide()
 $("#tile1").focus()
 $("#currentTile").val("1")
@@ -13,7 +13,6 @@ function everything(keyPressed, keyCode, element, event = null) {
     let currentTile = parseInt($("#currentTile").val())
     let inputId = currentTile < 1 ? "hiddenTile" : "tile" + currentTile
     let nextTileNumber = parseInt($("#nextTile").val())
-    console.log(currentTile, keyCode, inputId, "currentTile, kc and inputId")
     if (validKeys.includes(keyCode) && inputId != "hiddenTile") {
         $(`#${inputId}`).val(keyPressed)
         if (shouldMoveTile(inputId)) {
@@ -22,7 +21,6 @@ function everything(keyPressed, keyCode, element, event = null) {
             currentTile += 1
         } else {
             $("#nextTile").val(extractTileNumber(inputId) + 1)
-            console.log("finished row - setting focus to hiddenTile")
             $("#hiddenTile").focus()
             currentTile = 0
         }
@@ -31,17 +29,19 @@ function everything(keyPressed, keyCode, element, event = null) {
         let number = parseInt($("#nextTile").val()) - 1
         let enteredWord = extractWord(number)
         let result = checkWord(enteredWord, word)
-        console.log("ENTER key pressed")
         if (result.result) { // when the guess is right
-
             let i = $("#nextTile").val() - 1
             let stopat = i - 5
             for (; i > stopat; i--) {
                 $(`#tile${i}`).addClass("right")
             }
-            $(".alert-success").fadeIn(1500).text("You Won!")
             pop()
+            text += "🟩🟩🟩🟩🟩"
             $("input").attr("disabled", "disabled")
+            $('#modal').click()
+            $(".modal-body").html(
+                `You Got It!<br> The word was ${word}<br> Here is you attemps: <br> ${text}`
+            )
         } else { // when the guess is wrong
             isRealWord(enteredWord)
                 .then((isReal) => {
@@ -51,17 +51,18 @@ function everything(keyPressed, keyCode, element, event = null) {
                         result.positions.forEach((value) => {
                             $(`#tile${i}`)
                                 .attr('disabled', true)
-                                .attr('readonly', true)
                                 .addClass(value)
-                            console.log(($(`#tile${i}`).val()).toUpperCase())
+                            document.getElementById(`tile${i}`).readOnly = true
                             // Add Keyboard Colors
                             if (value == "right") { 
+                                text += "🟩"
                                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
                                 if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("exists")) {
                                     $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).removeClass("exists")
                                 }
                             }
                             if (value == "exists") {
+                                text += "🟨"
                                 if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("right")) {
 
                                 } else {
@@ -69,10 +70,13 @@ function everything(keyPressed, keyCode, element, event = null) {
                                 }
                             }
                             if (value == "wrong") {
+                                text += "⬛"
                                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("wrong")
                             }
                             i++
                         })
+                        text += "<br>"
+                        console.log(text)
 
                         //proceed to the next row: 
                         let nextTile = "#tile" + nextTileNumber
@@ -86,7 +90,6 @@ function everything(keyPressed, keyCode, element, event = null) {
                     } else {
 
 
-                        console.log("nw setting the focus to tile" + nextTileNumber)
                         $(`#tile${nextTileNumber}`).focus()
                         $(".alert-danger").fadeIn(1000).text("Not a word")
                         setTimeout(() => {
@@ -96,9 +99,6 @@ function everything(keyPressed, keyCode, element, event = null) {
                 })
         }
     } else if (keyCode == 8) { // DELETE key pressed
-
-        console.log("Delete key is pressed with " + inputId, nextTileNumber)
-
         //     then we have to use nextTile to find while tiles to delete the values from
         if (inputId == "hiddenTile") {
             $(`#tile${nextTileNumber - 1}`).val("")
@@ -124,4 +124,8 @@ $(".guess").keydown(function (event) {
 $(".letter").on("click", function (event) {
     let letter = $(this).val()
     everything(letter, getKeyCode(letter))
+})
+
+$("#share").on("click", function () {
+    copyToClipboard(text)
 })

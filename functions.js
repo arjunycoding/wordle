@@ -125,3 +125,7 @@ function getKeyCode(letter) {
     }
     return letters[letter.toLowerCase()]
 }
+
+function copyToClipboard(string) {
+    document.execCommand("hi")
+  }
