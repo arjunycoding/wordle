@@ -124,6 +124,7 @@ $(".guess").keydown(function (event) {
 
 $(".letter").on("click", function (event) {
     let letter = $(this).val()
+    console.log(letter)
     everything(letter, getKeyCode(letter))
 })
 
