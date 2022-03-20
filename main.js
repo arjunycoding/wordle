@@ -40,7 +40,7 @@ function everything(keyPressed, keyCode, element, event = null) {
             $("input").attr("disabled", "disabled")
             $('#modal').click()
             $(".modal-body").html(
-                `You Got It!<br> The word was ${word}<br> Here is your attemp: <br> ${text}`
+                `You Got It!<br> The word was ${word}<br> Here is your attempt: <br> ${text}`
             )
         } else { // when the guess is wrong
             isRealWord(enteredWord)
@@ -75,7 +75,8 @@ function everything(keyPressed, keyCode, element, event = null) {
                             }
                             i++
                         })
-                        text += "<br>"
+                        text += "\n"
+                        $("#textMessage").val(text)
                         console.log(text)
 
                         //proceed to the next row: 
@@ -126,6 +127,6 @@ $(".letter").on("click", function (event) {
     everything(letter, getKeyCode(letter))
 })
 
-$("#share").on("click", function () {
-    text.copyText(text)
-})
+// $("#share").on("click", function () {
+//     copyText()
+// })

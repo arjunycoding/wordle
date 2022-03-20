@@ -110,3 +110,7 @@ svg{
   backface-visibility: hidden;
   transform: translateX(0deg);
 }
+
+#textMessage{
+  display: none;
+}

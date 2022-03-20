@@ -23,6 +23,9 @@
             <input autocomplete="off" type="text" id="hiddenTile" class="guess">
             <input autocomplete="off" type="hidden" id="nextTile">
             <input autocomplete="off" type="hidden" id="currentTile">
+            <!-- <template autocomplete="off" type="text" id="textMessage"><button>Copy</button> -->
+            <textarea id="textMessage" name="story" rows="5" cols="33">
+                </textarea>
         </div>
         <div class="alert alert-danger message" id="error" role="alert">
 
@@ -100,8 +103,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="button" class="btn btn-primary" id="share">Share</button>
+                        <button type="button" class="btn btn-primary" id="share" onclick="copyText()">Share</button>
                     </div>
                 </div>
             </div>
