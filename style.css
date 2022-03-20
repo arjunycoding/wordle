@@ -90,11 +90,15 @@ svg{
 }
 @media only screen and (max-width: 625px) {
   .letter {
-    width: 6%;
+    width: 7.75%;
     margin: 2px !important;
   }
   .enter, .delete{
-    width: 15%;
+    width: 13%;
+  }
+  body{
+    padding: 0px;
+    padding-top: 10px;
   }
 }
 
