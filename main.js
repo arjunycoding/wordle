@@ -38,6 +38,8 @@ function everything(keyPressed, keyCode, element, event = null) {
             }
             pop()
             text += "🟩🟩🟩🟩🟩"
+            displayText += "🟩🟩🟩🟩🟩"
+            $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
             $("input").attr("disabled", "disabled")
             $('#modal').click()
             $(".modal-body").html(
@@ -102,7 +104,7 @@ function everything(keyPressed, keyCode, element, event = null) {
         }
     } else if (keyCode == 8) { // DELETE key pressed
         //     then we have to use nextTile to find while tiles to delete the values from
-        if (inputId == "tile6" || inputId == "tile11" || inputId == "tile16" || inputId == "tile21" || inputId == "tile24") {
+        if (inputId == "tile6" || inputId == "tile11" || inputId == "tile16" || inputId == "tile21" || inputId == "tile26") {
             
         } else if (inputId == "hiddenTile") {
             $(`#tile${nextTileNumber - 1}`).val("")
