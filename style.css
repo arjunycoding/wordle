@@ -118,3 +118,8 @@ svg{
 #textMessage{
   display: none;
 }
+
+#hiddenTile:focus, #hiddenTile{
+  border:none;
+  background-color: inherit;
+}
