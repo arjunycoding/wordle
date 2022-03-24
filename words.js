@@ -497,3 +497,40 @@ let words = [
     "young",
     "youth"
 ]
+
+let mathwords = [
+    "angle",
+    "carry",
+    "circle",
+    "curve",
+    "eight",
+    "equal",
+    "fifty",
+    "focus",
+    "forty",
+    "graph",
+    "minus",
+    "point",
+    "prime",
+    "proof",
+    "seven",
+    "sixty",
+    "slope",
+    "solve",
+    "tenth",
+    "three",
+    "times",
+    "torus",
+    "union",
+    "whole"
+]
+
+let sciencewords = [
+    "datum",
+    "flask",
+    "scale",
+    "weigh",
+    "watch",
+    "glass"
+
+] 
