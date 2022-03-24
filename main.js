@@ -39,6 +39,7 @@ function everything(keyPressed, keyCode, element, event = null) {
             pop()
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
+            $("#textMessage").val(text)
             setTimeout(() => {
 
                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
@@ -133,4 +134,8 @@ $(".guess").keydown(function (event) {
 $(".letter").on("click", function (event) {
     let letter = $(this).val()
     everything(letter, getKeyCode(letter))
+})
+
+$("#share").onclick(() => {
+    $(this).text("Copied To Clipboard!")
 })
