@@ -37,7 +37,7 @@ function checkWord(enteredWord, actualWord) {
         }
     }
 }
-
+// This function checks the word inputed and returns if the word is true
 async function isRealWord(wordToCheck) {
     let link = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordToCheck}`
     let response = await fetch(link)
@@ -45,7 +45,7 @@ async function isRealWord(wordToCheck) {
     return await result.title != "No Definitions Found"
 }
 
-
+// this fucntions gets the word inputed based on what input you are on
 function extractWord(tileNumber) {
     if (tileNumber % 5 == 0) { //extract only when at the end tile for the word
         let enteredWord = ""
@@ -58,7 +58,7 @@ function extractWord(tileNumber) {
     return ""
 }
 
-
+// This function checks if you should move tiles
 function shouldMoveTile(inputId) {
     if (extractTileNumber(inputId) % 5 == 0) {
         return false
@@ -66,32 +66,25 @@ function shouldMoveTile(inputId) {
     return true
 }
 
-
+// this function returns the next input box
 function getNextTile(inputId) {
     let number = extractTileNumber(inputId)
     return inputId.slice(0, 4) + (number + 1)
 }
 
-
+// this function returns the prevoius input box
 function getPreviousTile(inputId) {
     let number = extractTileNumber(inputId)
     return inputId.slice(0, 4) + (number - 1)
 }
 
-
+// this function gets which the tile number you are on(Ex: "tile2" --> "2")
 function extractTileNumber(inputId) {
     let numberString = inputId.length > 4 ? inputId.slice(4, 6) : inputId[4]
     return parseInt(numberString)
 }
 
-
-function keyClicked(inputId, clickedKeyId) {
-    let addValue = $(clickedKeyId).text()
-    $(`#${inputId}`).val(addValue)
-    console.log(inputId, $(clickedKeyId).text())
-}
-
-
+// this function gets the keycode of the key you passed
 function getKeyCode(letter) {
     let letters = {
         "a": 65,
