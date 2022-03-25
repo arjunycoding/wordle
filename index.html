@@ -20,7 +20,34 @@
 
 <body>
     <h1 class="heading">Wordle</h1>
-    <div>
+    <div class="card border-light mb-3" style="max-width: 18rem;" id="form">
+        <div class="card-header">Choose Your Subject</div>
+        <div class="card-body">
+            <p class="card-text">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subject" value="math" checked>
+                <label class="form-check-label">
+                    Math
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subject" value="science">
+                <label class="form-check-label">
+                    Science
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="subject" value="random">
+                <label class="form-check-label">
+                    Random
+                </label>
+            </div><br>
+            <button type="button" class="btn btn-primary" id="submit">Submit</button>
+        </div>
+        </p>
+    </div>
+    </div>
+    <div id="game">
         <div id="hiddenDiv">
             <input autocomplete="off" readonly type="text" id="hiddenTile" class="guess">
             <input autocomplete="off" readonly type="hidden" id="nextTile">
@@ -103,7 +130,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="share" onclick="copyText()">Share</button>
+                        <button type="button" class="btn btn-primary" id="share"
+                            onclick="copyText('textMessage', '#share')">Share</button>
                     </div>
                 </div>
             </div>

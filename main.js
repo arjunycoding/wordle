@@ -6,9 +6,25 @@ $('#modal').hide()
 let word = words[Math.floor(Math.random() * words.length)]
 let text = ""
 let displayText = ""
+let names = ["math", "science", "random"]
 $(".message").hide()
-$("#tile1").focus()
 $("#currentTile").val("1")
+$("#game").hide()
+$("#submit").on("click", () => {
+    names.forEach((value) => {
+        console.log(value)
+        if ($(`input[value='${value}']:checked`).val()) {
+            if (value == "math") {
+                word = mathwords[Math.floor(Math.random() * mathwords.length)]
+            } else if (value == "science") {
+                word = sciencewords[Math.floor(Math.random() * sciencewords.length)]
+            }
+        }
+    })
+    $("#game").show()
+    $("#form").hide()
+    $("#tile1").focus()
+})
 let inputId = $(this).attr("")
 function everything(keyPressed, keyCode, element, event = null) {
     let currentTile = parseInt($("#currentTile").val())
@@ -39,6 +55,7 @@ function everything(keyPressed, keyCode, element, event = null) {
             pop()
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
+            $("#textMessage").val(text)
             setTimeout(() => {
 
                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")

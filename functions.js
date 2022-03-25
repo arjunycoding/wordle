@@ -120,9 +120,11 @@ function getKeyCode(letter) {
 }
 
 
-function copyText() {
-    var copyText = document.getElementById("textMessage")
+function copyText(inputId, btn) {
+    var copyText = document.getElementById(inputId)
     copyText.select()
     copyText.setSelectionRange(0, 99999)
     navigator.clipboard.writeText(copyText.value)
+    $(btn).text("Copied To Clipboard!")
+    setTimeout(() => { $(btn).text("Share") }, 2000)
 }
