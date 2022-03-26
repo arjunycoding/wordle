@@ -114,3 +114,20 @@ svg{
 #form{
   margin: auto;
 }
+
+*{
+  box-sizing:border-box;           /* easier box-model calculations */
+  -webkit-box-sizing: border-box;
+}
+
+textarea {
+  /* position: fixed; */
+  /* left:; top:10px; */
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:  calc(10vw - -360px);       calc and viewport to the rescue
+  height: calc(100vh - 500px);
+  resize: none; */
+  width: 100%;
+}

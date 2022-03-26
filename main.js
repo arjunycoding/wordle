@@ -6,18 +6,20 @@ $('#modal').hide()
 let word = words[Math.floor(Math.random() * words.length)]
 let text = ""
 let displayText = ""
-let names = ["math", "science", "random"]
+let names = ["math", "science", "random", "computers"]
 $(".message").hide()
 $("#currentTile").val("1")
 $("#game").hide()
 $("#submit").on("click", () => {
     names.forEach((value) => {
-        console.log(value)
         if ($(`input[value='${value}']:checked`).val()) {
             if (value == "math") {
                 word = mathwords[Math.floor(Math.random() * mathwords.length)]
+                console.log(word)
             } else if (value == "science") {
                 word = sciencewords[Math.floor(Math.random() * sciencewords.length)]
+            } else if (value == "computers") {
+                word = computerwords[Math.floor(Math.random() * computerwords.length)]
             }
         }
     })
@@ -55,18 +57,18 @@ function everything(keyPressed, keyCode, event = null) {
             pop()
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
-            let lines = ((displayText.split("<br>")).length) + "tries" 
+            let lines = ((displayText.split("<br>")).length) + "tries"
             text = `${lines}/6\n` + text + "\nWant To Play Wordle? Go To: https://arjunycoding.github.io/wordle/"
             $("#textMessage").val(text)
             setTimeout(() => {
-                
+
                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
                 $("input").attr("disabled", "disabled")
                 $('#modal').click()
                 $(".modal-body").html(
                     `You Got It!<br> The word was ${word}<br> Here is your attempt: <br> ${displayText}`
-                    )
-                }, 1000)
+                )
+            }, 1000)
         } else { // when the guess is wrong
             isRealWord(enteredWord)
                 .then((isReal) => {
