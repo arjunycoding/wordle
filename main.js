@@ -26,7 +26,7 @@ $("#submit").on("click", () => {
     $("#tile1").focus()
 })
 let inputId = $(this).attr("")
-function everything(keyPressed, keyCode, element, event = null) {
+function everything(keyPressed, keyCode, event = null) {
     let currentTile = parseInt($("#currentTile").val())
     let inputId = currentTile < 1 ? "hiddenTile" : "tile" + currentTile
     let nextTileNumber = parseInt($("#nextTile").val())
@@ -55,16 +55,18 @@ function everything(keyPressed, keyCode, element, event = null) {
             pop()
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
+            let lines = ((displayText.split("<br>")).length) + "tries" 
+            text = `${lines}/6\n` + text + "\nWant To Play Wordle? Go To: https://arjunycoding.github.io/wordle/"
             $("#textMessage").val(text)
             setTimeout(() => {
-
+                
                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
                 $("input").attr("disabled", "disabled")
                 $('#modal').click()
                 $(".modal-body").html(
                     `You Got It!<br> The word was ${word}<br> Here is your attempt: <br> ${displayText}`
-                )
-            }, 1000)
+                    )
+                }, 1000)
         } else { // when the guess is wrong
             isRealWord(enteredWord)
                 .then((isReal) => {
@@ -144,7 +146,7 @@ function everything(keyPressed, keyCode, element, event = null) {
     }
 }
 $(".guess").keydown(function (event) {
-    everything(event.key, event.keyCode, this, event)
+    everything(event.key, event.keyCode, event)
 })
 
 $(".letter").on("click", function (event) {
