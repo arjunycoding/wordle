@@ -3,6 +3,7 @@ for (let i = 65; i <= 90; i++) { //all alphabets
     validKeys.push(i)
 }
 $('#modal').hide()
+$(".headerIcon").hide()
 let word = words[Math.floor(Math.random() * words.length)]
 let text = ""
 let displayText = ""
@@ -26,6 +27,7 @@ $("#submit").on("click", () => {
     $("#game").show()
     $("#form").hide()
     $("#tile1").focus()
+    $(".headerIcon").show()
 })
 let inputId = $(this).attr("")
 function everything(keyPressed, keyCode, event = null) {

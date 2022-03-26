@@ -17,6 +17,8 @@ body{
 .heading{
   font-family: 'Cuprum';
   text-align: center;
+  display: inline;
+  margin: 45%;
 }
 #hiddenTile {
   height: 0px;
@@ -115,19 +117,32 @@ svg{
   margin: auto;
 }
 
-*{
-  box-sizing:border-box;           /* easier box-model calculations */
-  -webkit-box-sizing: border-box;
+textarea {
+  width: 100%;
 }
 
-textarea {
-  /* position: fixed; */
-  /* left:; top:10px; */
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width:  calc(10vw - -360px);       calc and viewport to the rescue
-  height: calc(100vh - 500px);
-  resize: none; */
+.headerIcon{
+  background-color: white;
+  border: none;
+  position: absolute;
+  top: 10px;
+  left:0px;
+  
+}
+
+#header{
+  border-bottom: 1px solid black;
   width: 100%;
+
+}
+
+
+.guess {
+  overflow: hidden;
+  transition-duration: 0.8s;
+  transition-property: transform;
+}
+
+.flip{
+  -webkit-transform: rotateX(360deg);
 }

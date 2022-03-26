@@ -19,23 +19,23 @@
 </head>
 
 <body>
-    <h1 class="heading">Wordle</h1>
-    <hr>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Notes
-    </button>
-
+    <div id="header">
+        <h1 class="heading">Wordle</h1>
+        <!-- Button trigger modal -->
+        <button type="button" class="headerIcon" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img src="notes.png" alt="post it note" width="35px">
+        </button>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Notes</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <textarea name="" id="" cols="55" rows="10"></textarea>
+                    <textarea name="" id="" cols="55" rows="10" placeholder="Feel Free To Write Down Any New Notes About The Word Here!"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -143,12 +143,12 @@
         </table>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modal">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" id="modal">
             Launch demo modal
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
