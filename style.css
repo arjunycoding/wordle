@@ -139,10 +139,15 @@ textarea {
 
 .guess {
   overflow: hidden;
-  transition-duration: 0.8s;
+  transition-duration: 3s;
   transition-property: transform;
 }
 
 .flip{
-  -webkit-transform: rotateX(360deg);
+  /* transform: rotate3d(360, 360, 0, 360deg); */
+  /* rotate3d(x, y, z, a) */
+  transform: skewX(90deg);
+
+  /* animation-play-state: running; */
+
 }

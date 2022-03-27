@@ -55,6 +55,8 @@ function everything(keyPressed, keyCode, event = null) {
             let stopat = i - 5
             for (; i > stopat; i--) {
                 $(`#tile${i}`).addClass("right")
+                $(`#tile${i}`).addClass("flip")
+                $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
             }
             pop()
             text += "🟩🟩🟩🟩🟩"
@@ -64,7 +66,6 @@ function everything(keyPressed, keyCode, event = null) {
             $("#textMessage").val(text)
             setTimeout(() => {
 
-                $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
                 $("input").attr("disabled", "disabled")
                 $('#modal').click()
                 $(".modal-body").html(
@@ -77,8 +78,12 @@ function everything(keyPressed, keyCode, event = null) {
                     if (isReal) {
 
                         let i = nextTileNumber - 5
+                        let seconds = 50
                         result.positions.forEach((value) => {
+                            // setTimeout(() => {
                             $(`#tile${i}`).addClass(value)
+                            $(`#tile${i}`).addClass("flip")
+                            // }, seconds)
                             $(`#tile${i}`).prop('disabled', true)
                             document.getElementById(`tile${i}`).readOnly = true
                             // Add Keyboard Colors
@@ -89,8 +94,7 @@ function everything(keyPressed, keyCode, event = null) {
                                 if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("exists")) {
                                     $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).removeClass("exists")
                                 }
-                            }
-                            if (value == "exists") {
+                            } else if (value == "exists") {
                                 text += "🟨"
                                 displayText += "🟨"
                                 if ($(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("right")) {
@@ -98,13 +102,15 @@ function everything(keyPressed, keyCode, event = null) {
                                 } else {
                                     $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("exists")
                                 }
-                            }
-                            if (value == "wrong") {
+                            } else if (value == "wrong") {
                                 text += "⬛"
                                 displayText += "⬛"
-                                $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("wrong")
+                                if (!$(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).hasClass("right")) {
+                                    $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("wrong")
+                                }
                             }
                             i++
+                            // seconds += 0.5
                         })
                         text += "\n"
                         displayText += "<br>"
@@ -156,4 +162,8 @@ $(".guess").keydown(function (event) {
 $(".letter").on("click", function (event) {
     let letter = $(this).val()
     everything(letter, getKeyCode(letter))
+})
+
+$("#notesBtn").on("click", () => {
+    $("#clonedTable").replaceWith($("table").clone().appendTo("#clonedTable"))
 })
