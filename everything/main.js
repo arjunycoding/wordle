@@ -13,23 +13,52 @@ for (let i = 65; i <= 90; i++) { //all alphabets
 }
 $('#modal').hide()
 $(".headerIcon").hide()
-let word = words[Math.floor(Math.random() * words.length)]
+let pointCout = 100 
+let wordObject = words[Math.floor(Math.random() * words.length)]
+let word = wordObject.word
+let clue1 = wordObject.clue1
+let clue2 = wordObject.clue2
+let clue3 = wordObject.clue3
+console.log(word, "\n", clue1, "\n", clue2, "\n", clue3)
+$("#clues").hide()
+$("#clue1").html(clue1).hide()
+$("#clue2").html(clue2).hide()
+$("#clue3").html(clue3).hide()
+$("#showClue1").hide()
+$("#showClue2").hide()
+$("#showClue3").hide()
 let text = ""
 let displayText = ""
 let names = ["math", "science", "random", "computers"]
+let id = ["easy", "medium", "hard"]
+let autoshow = false
 $(".message").hide()
 $("#currentTile").val("1")
 $("#game").hide()
 $("#submit").on("click", () => {
-    names.forEach((value) => {
-        if ($(`input[value='${value}']:checked`).val()) {
-            if (value == "math") {
-                word = mathwords[Math.floor(Math.random() * mathwords.length)]
-                console.log(word)
-            } else if (value == "science") {
-                word = sciencewords[Math.floor(Math.random() * sciencewords.length)]
-            } else if (value == "computers") {
-                word = computerwords[Math.floor(Math.random() * computerwords.length)]
+    // names.forEach((value) => {
+    //     if ($(`input[value='${value}']:checked`).val()) {
+    //         if (value == "math") {
+    //             word = mathwords[Math.floor(Math.random() * mathwords.length)]
+    //             console.log(word)
+    //         } else if (value == "science") {
+    //             word = sciencewords[Math.floor(Math.random() * sciencewords.length)]
+    //         } else if (value == "computers") {
+    //             word = computerwords[Math.floor(Math.random() * computerwords.length)]
+    //         }
+    //     }
+    // })
+    id.forEach((value) => {
+        if ($(`input[id='${value}']:checked`).val()) {
+            if (value == "easy") {
+                autoshow = true
+            } else if (value == "medium") {
+                pointCout = 150
+            } else if (value == "hard") {
+                pointCout = 200
+                $("#showClue1").remove()
+                $("#showClue2").remove()
+                $("#showClue3").remove()
             }
         }
     })
@@ -42,6 +71,28 @@ function everything(keyPressed, keyCode, event = null) {
     let currentTile = parseInt($("#currentTile").val())
     let inputId = currentTile < 1 ? "hiddenTile" : "tile" + currentTile
     let nextTileNumber = parseInt($("#nextTile").val())
+    console.log(autoshow)
+    if (autoshow) {
+        if (inputId == "tile11") {
+            $('#showClue1').click()
+            $("#showClue1").hide()
+            $("#showClue2").hide()
+            $("#showClue3").hide()
+        } else if (inputId == "tile16") {
+            $('#showClue2').click()
+            $("#showClue1").hide()
+            $("#showClue2").hide()
+            $("#showClue3").hide()
+        } else if (inputId == "tile21") {
+            $('#showClue3').click()
+            $("#showClue1").hide()
+            $("#showClue2").hide()
+            $("#showClue3").hide()
+        }
+    }
+    if (inputId == "tile11" && !autoshow) {
+        $("#showClue1").show()
+    }
     if (validKeys.includes(keyCode) && inputId != "hiddenTile") {
         $(`#${inputId}`).val(keyPressed)
         if (shouldMoveTile(inputId)) {
@@ -66,11 +117,14 @@ function everything(keyPressed, keyCode, event = null) {
                 $(`#tile${i}`).addClass("flip")
                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
             }
+            $("#showClue1").hide()
+            $("#showClue2").hide()
+            $("#showClue3").hide()
             pop()
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
             let lines = ((displayText.split("<br>")).length) + "tries"
-            text = `${lines}/6\n` + text + "\nWant To Play Wordle? Go To: https://arjunycoding.github.io/wordle/"
+            text = `${lines}  Tries\n ${pointCout} Points` + text + "\nWant To Play Wordle? Go To: https://arjunycoding.github.io/wordle/"
             $("#textMessage").val(text)
             setTimeout(() => {
 
@@ -133,6 +187,9 @@ function everything(keyPressed, keyCode, event = null) {
                         if (nextTile == "#tile31") {
                             $(".alert-primary").fadeIn(1500).text("You did not get the word 😟. The word was " + word)
                         }
+                        pointCout -= 10
+
+                        $("#ponitCount").html(pointCout)
                     } else {
                         $(`#tile${nextTileNumber}`).focus()
                         $(".alert-danger").fadeIn(1000).text("Not a word")
@@ -170,4 +227,31 @@ $(".guess").keydown(function (event) {
 $(".letter").on("click", function (event) {
     let letter = $(this).val()
     everything(letter, getKeyCode(letter))
+})
+
+$("#showClue1").on("click", () => {
+    $("#clue1").show()
+    $("#clues").show()
+    $("#showClue1").hide()
+    $("#showClue1").hide()
+    $("#showClue2").show()
+    pointCout -= 10
+    $("#ponitCount").html(pointCout)
+
+})
+$("#showClue2").on("click", () => {
+    $("#clue2").show()
+    $("#showClue2").hide()
+    $("#showClue2").hide()
+    $("#showClue3").show()
+    pointCout -= 20
+    $("#ponitCount").html(pointCout)
+
+})
+$("#showClue3").on("click", () => {
+    $("#clue3").show()
+    $("#showClue3").hide()
+    pointCout -= 50
+    $("#ponitCount").html(pointCout)
+
 })

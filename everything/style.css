@@ -7,7 +7,6 @@ body{
   width: 50px;
   height: 50px;
   caret-color: transparent;
-  /* pointer-events: none; */
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -133,3 +132,27 @@ svg{
 .flip{
   transform: rotate3d(100, 360, 0, 360deg);
 }
+
+.headerIcon{
+  background-color: red;
+}
+
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:focus{
+  background-color: white;
+  border: none;
+  position: absolute;
+  top:0px;
+  left: 0px;
+  float: left;
+  box-shadow:0px 0px 0px 0px white;
+
+}
+#tableAndKeys{
+  /* position: absolute;
+  float: right;
+  right: 10%;
+  top:10%; */
+  width:100%;
+
+}
+
