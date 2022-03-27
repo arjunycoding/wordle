@@ -130,9 +130,8 @@ svg{
 }
 
 .flip{
-  transform: rotate3d(100, 360, 0, 360deg);
+  transform: rotateX(360deg);
 }
-
 .headerIcon{
   background-color: red;
 }
@@ -151,8 +150,8 @@ svg{
   /* position: absolute;
   float: right;
   right: 10%;
-  top:10%; */
-  width:100%;
+  top:10%;
+  width:100%; */
 
 }
 

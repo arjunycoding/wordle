@@ -671,10 +671,10 @@
 
 let words = [
     {
-        "word"  : "horse",
-        "clue1": "It's a land mamael",
+        "word": "horse",
+        "clue1": "It's a land mammal",
         "clue2": "It has four legs, a tail and is 4.82 feet tall",
-        "clue3" : "My and my brother love to go ____back riding",
+        "clue3": "My and my brother love to go ____back riding",
 
     }
 ]
