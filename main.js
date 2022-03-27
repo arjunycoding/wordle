@@ -1,3 +1,12 @@
+/*
+points
+clues 
+storing what they already worked 
+on shareing exact word
+topics expand
+
+*/
+
 let validKeys = [] //backspace & enter
 for (let i = 65; i <= 90; i++) { //all alphabets
     validKeys.push(i)
@@ -27,7 +36,6 @@ $("#submit").on("click", () => {
     $("#game").show()
     $("#form").hide()
     $("#tile1").focus()
-    $(".headerIcon").show()
 })
 let inputId = $(this).attr("")
 function everything(keyPressed, keyCode, event = null) {
@@ -162,8 +170,4 @@ $(".guess").keydown(function (event) {
 $(".letter").on("click", function (event) {
     let letter = $(this).val()
     everything(letter, getKeyCode(letter))
-})
-
-$("#notesBtn").on("click", () => {
-    $("#clonedTable").replaceWith($("table").clone().appendTo("#clonedTable"))
 })

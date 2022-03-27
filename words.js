@@ -667,5 +667,4 @@ let sciencewords = [
     "Weber",
     "White",
     "Young"
-
-] 
+]

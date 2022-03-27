@@ -117,19 +117,6 @@ svg{
   margin: auto;
 }
 
-textarea {
-  width: 100%;
-}
-
-.headerIcon{
-  background-color: white;
-  border: none;
-  position: absolute;
-  top: 10px;
-  left:0px;
-  
-}
-
 #header{
   border-bottom: 1px solid black;
   width: 100%;
@@ -144,10 +131,5 @@ textarea {
 }
 
 .flip{
-  /* transform: rotate3d(360, 360, 0, 360deg); */
-  /* rotate3d(x, y, z, a) */
-  transform: skewX(90deg);
-
-  /* animation-play-state: running; */
-
+  transform: rotate3d(100, 360, 0, 360deg);
 }
