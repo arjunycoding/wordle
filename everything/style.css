@@ -144,14 +144,8 @@ svg{
   left: 0px;
   float: left;
   box-shadow:0px 0px 0px 0px white;
-
-}
-#tableAndKeys{
-  /* position: absolute;
-  float: right;
-  right: 10%;
-  top:10%;
-  width:100%; */
-
 }
 
+#clues{
+  margin: auto;
+}

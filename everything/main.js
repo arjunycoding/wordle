@@ -13,6 +13,7 @@ for (let i = 65; i <= 90; i++) { //all alphabets
 }
 $('#modal').hide()
 $(".headerIcon").hide()
+$("#showAllClues").hide()
 let pointCout = 100 
 let wordObject = words[Math.floor(Math.random() * words.length)]
 let word = wordObject.word
@@ -27,6 +28,7 @@ $("#clue3").html(clue3).hide()
 $("#showClue1").hide()
 $("#showClue2").hide()
 $("#showClue3").hide()
+$("#singleClue").hide()
 let text = ""
 let displayText = ""
 let names = ["math", "science", "random", "computers"]
@@ -232,6 +234,8 @@ $(".letter").on("click", function (event) {
 $("#showClue1").on("click", () => {
     $("#clue1").show()
     $("#clues").show()
+    $("singleClue").show()
+    $("#clue").html(clue1)
     $("#showClue1").hide()
     $("#showClue1").hide()
     $("#showClue2").show()
@@ -241,6 +245,7 @@ $("#showClue1").on("click", () => {
 })
 $("#showClue2").on("click", () => {
     $("#clue2").show()
+    $("#clue").html(clue2)
     $("#showClue2").hide()
     $("#showClue2").hide()
     $("#showClue3").show()
@@ -250,8 +255,19 @@ $("#showClue2").on("click", () => {
 })
 $("#showClue3").on("click", () => {
     $("#clue3").show()
+    $("#clue").html(clue3)
     $("#showClue3").hide()
     pointCout -= 50
     $("#ponitCount").html(pointCout)
 
+})
+
+
+$("#showAllClues").on("click", () => {
+    $("#clues").show()
+    $("singleClue").hide()
+    setTimeout(() => {
+        $("singleClue").show()
+        $("#clues").hide()
+    }, 10000)
 })

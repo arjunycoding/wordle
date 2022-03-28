@@ -120,16 +120,17 @@
                 </div>
             </div>
         </div>
+        <button type="button" class="btn btn-primary" id="showClue1">Show Clue 1</button>
+        <button type="button" class="btn btn-primary" id="showClue2">Show Clue 2</button>
+        <button type="button" class="btn btn-primary" id="showClue3">Show Clue 3</button>
         <div id="tableAndKeys">
             <!-- <div class="row justify-content-evenly"> -->
             <!-- <div class="col-4"> -->
 
+            <button type="button" class="btn btn-primary" id="showAllClues">Show All Clues</button>
             <div id="clues" class="card border-light mb-3" style="max-width: 18rem;">
                 <div class="card-header">Clues</div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary" id="showClue1">Show Clue 1</button>
-                    <button type="button" class="btn btn-primary" id="showClue2">Show Clue 2</button>
-                    <button type="button" class="btn btn-primary" id="showClue3">Show Clue 3</button>
                     <p class="card-text">
                     <ul>
                         <li id="clue1"></li>
@@ -139,126 +140,131 @@
                     </p>
                 </div>
             </div>
-            <!-- </div> -->
-            <!-- <div class="col-6"> -->
-            <table>
-                <tr>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile1">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile2">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile3">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile4">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile5">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile6">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile7">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile8">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile9">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile10">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile11">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile12">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile13">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile14">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile15">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile16">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile17">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile18">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile19">
-                    </td>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile20">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td><input readonly autocomplete="off" type="text" class="guess guess5" maxlength="1" id="tile21">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile22">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile23">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile24">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile25">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile26">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile27">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile28">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile29">
-                    </td>
-                    <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile30">
-                    </td>
-
-                </tr>
-            </table>
-            <div class="keyboard">
-                <button class="letter key" value="Q">Q</button>
-                <button class="letter key" value="W">W</button>
-                <button class="letter key" value="E">E</button>
-                <button class="letter key" value="R">R</button>
-                <button class="letter key" value="T">T</button>
-                <button class="letter key" value="Y">Y</button>
-                <button class="letter key" value="U">U</button>
-                <button class="letter key" value="I">I</button>
-                <button class="letter key" value="O">O</button>
-                <button class="letter key" value="P">P</button>
-                <div class="rowCenter">
-                    <button class="letter key" value="A">A</button>
-                    <button class="letter key" value="S">S</button>
-                    <button class="letter key" value="D">D</button>
-                    <button class="letter key" value="F">F</button>
-                    <button class="letter key" value="G">G</button>
-                    <button class="letter key" value="H">H</button>
-                    <button class="letter key" value="J">J</button>
-                    <button class="letter key" value="K">K</button>
-                    <button class="letter key" value="L">L</button>
+            <div id="singleClue" class="card border-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Clues</div>
+                <div class="card-body">
+                    <p class="card-text" id="clue"></p>
                 </div>
-                <button class="enter letter key" value="enter">
-                    <img src="images/enter.png" alt="enter" width="50px" center>
-                </button>
-                <button class="letter key" value="Z">Z</button>
-                <button class="letter key" value="X">X</button>
-                <button class="letter key" value="C">C</button>
-                <button class="letter key" value="V">V</button>
-                <button class="letter key" value="B">B</button>
-                <button class="letter key" value="N">N</button>
-                <button class="letter key" value="M">M</button>
-                <button class="key letter delete" value="delete">
-                    <img src="images/delete.png" alt="delete" width="50px" center>
-                </button>
             </div>
             <!-- </div> -->
-            <!-- </div> -->
+            <div id="main">
+                <table>
+                    <tr>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile1">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile2">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile3">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile4">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess1" maxlength="1" id="tile5">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile6">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile7">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile8">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile9">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess2" maxlength="1" id="tile10">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile11">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile12">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile13">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile14">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess3" maxlength="1" id="tile15">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile16">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile17">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile18">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile19">
+                        </td>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess4" maxlength="1" id="tile20">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><input readonly autocomplete="off" type="text" class="guess guess5" maxlength="1" id="tile21">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile22">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile23">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile24">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess5" maxlength="1" id="tile25">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile26">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile27">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile28">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile29">
+                        </td>
+                        <td><input readonly autocomplete="off" type=" text" class="guess guess6" maxlength="1" id="tile30">
+                        </td>
+
+                    </tr>
+                </table>
+                <div class="keyboard">
+                    <button class="letter key" value="Q">Q</button>
+                    <button class="letter key" value="W">W</button>
+                    <button class="letter key" value="E">E</button>
+                    <button class="letter key" value="R">R</button>
+                    <button class="letter key" value="T">T</button>
+                    <button class="letter key" value="Y">Y</button>
+                    <button class="letter key" value="U">U</button>
+                    <button class="letter key" value="I">I</button>
+                    <button class="letter key" value="O">O</button>
+                    <button class="letter key" value="P">P</button>
+                    <div class="rowCenter">
+                        <button class="letter key" value="A">A</button>
+                        <button class="letter key" value="S">S</button>
+                        <button class="letter key" value="D">D</button>
+                        <button class="letter key" value="F">F</button>
+                        <button class="letter key" value="G">G</button>
+                        <button class="letter key" value="H">H</button>
+                        <button class="letter key" value="J">J</button>
+                        <button class="letter key" value="K">K</button>
+                        <button class="letter key" value="L">L</button>
+                    </div>
+                    <button class="enter letter key" value="enter">
+                        <img src="images/enter.png" alt="enter" width="50px" center>
+                    </button>
+                    <button class="letter key" value="Z">Z</button>
+                    <button class="letter key" value="X">X</button>
+                    <button class="letter key" value="C">C</button>
+                    <button class="letter key" value="V">V</button>
+                    <button class="letter key" value="B">B</button>
+                    <button class="letter key" value="N">N</button>
+                    <button class="letter key" value="M">M</button>
+                    <button class="key letter delete" value="delete">
+                        <img src="images/delete.png" alt="delete" width="50px" center>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Button trigger modal -->
