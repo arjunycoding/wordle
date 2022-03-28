@@ -79,9 +79,6 @@ input:focus {
   margin: 5px;
   border-radius: 5px;
 }
-svg{
-  width: 45px;
-}
 .rowCenter{
   margin-left: 20px;
 }
@@ -114,6 +111,7 @@ svg{
 
 #form{
   margin: auto;
+  border-color: #818181;
 }
 
 #header{
@@ -132,6 +130,10 @@ svg{
 .flip{
   transform: rotateX(360deg);
 }
+
+.speacialFlip{
+  transform: rotate3d(360, 0, 360,  360deg);
+}
 .headerIcon{
   background-color: red;
 }
@@ -146,6 +148,6 @@ svg{
   box-shadow:0px 0px 0px 0px white;
 }
 
-#clues{
+#clues, #singleClue{
   margin: auto;
 }

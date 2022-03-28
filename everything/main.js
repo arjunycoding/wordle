@@ -14,7 +14,7 @@ for (let i = 65; i <= 90; i++) { //all alphabets
 $('#modal').hide()
 $(".headerIcon").hide()
 $("#showAllClues").hide()
-let pointCout = 100 
+let pointCout = 100
 let wordObject = words[Math.floor(Math.random() * words.length)]
 let word = wordObject.word
 let clue1 = wordObject.clue1
@@ -116,7 +116,7 @@ function everything(keyPressed, keyCode, event = null) {
             let stopat = i - 5
             for (; i > stopat; i--) {
                 $(`#tile${i}`).addClass("right")
-                $(`#tile${i}`).addClass("flip")
+                $(`#tile${i}`).addClass("speacialFlip")
                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
             }
             $("#showClue1").hide()
@@ -125,17 +125,20 @@ function everything(keyPressed, keyCode, event = null) {
             pop()
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
-            let lines = ((displayText.split("<br>")).length) + "tries"
-            text = `${lines}  Tries\n ${pointCout} Points` + text + "\nWant To Play Wordle? Go To: https://arjunycoding.github.io/wordle/"
+            let lines = ((displayText.split("<br>")).length)
+            text = `${lines} Tries\n
+                ${pointCout} Points\n`
+                + text +
+                "\nWant To Play Wordle? Go To: https://arjunycoding.github.io/wordle/"
+            console.log(text)
             $("#textMessage").val(text)
             setTimeout(() => {
-
                 $("input").attr("disabled", "disabled")
                 $('#modal').click()
                 $(".modal-body").html(
-                    `You Got It!<br> The word was ${word}<br> Here is your attempt: <br> ${displayText}`
+                    `You Got It!<br> The word was ${word}<br> You have ${pointCout}<br>Here is your attempt: <br> ${displayText}`
                 )
-            }, 1000)
+            }, 3000)
         } else { // when the guess is wrong
             isRealWord(enteredWord)
                 .then((isReal) => {
@@ -233,8 +236,8 @@ $(".letter").on("click", function (event) {
 
 $("#showClue1").on("click", () => {
     $("#clue1").show()
-    $("#clues").show()
-    $("singleClue").show()
+    $("#clues").hide()
+    $("#singleClue").show()
     $("#clue").html(clue1)
     $("#showClue1").hide()
     $("#showClue1").hide()
@@ -265,9 +268,9 @@ $("#showClue3").on("click", () => {
 
 $("#showAllClues").on("click", () => {
     $("#clues").show()
-    $("singleClue").hide()
+    $("#singleClue").hide()
     setTimeout(() => {
-        $("singleClue").show()
+        $("#singleClue").show()
         $("#clues").hide()
     }, 10000)
 })
