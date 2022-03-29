@@ -142,7 +142,7 @@ function everything(keyPressed, keyCode, event = null) {
                 $("input").attr("disabled", "disabled")
                 $('#modal').click()
                 $(".modal-body").html(
-                    `You Got It!<br> The word was ${word}<br> You have ${pointCout}<br>Here is your attempt: <br> ${displayText}`
+                    `You Got It!<br> The word was ${word}<br> You earned ${pointCout} Points <br>Here is your attempt: <br> ${displayText}`
                 )
             }, 3000)
         } else { // when the guess is wrong

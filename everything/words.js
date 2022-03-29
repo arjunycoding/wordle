@@ -669,7 +669,73 @@
 //     "Young"
 // ]
 
+
+
+//     "acute",
+//     "admit",
+//     "adopt",
+//     "adult",
+//     "after",
+//     "again",
+//     "agent",
+//     "agree",
+//     "ahead",
+//     "alarm",
+//     "album",
+//     "alert",
+//     "alike",
+//     "alive",
+//     "allow",
+//     "alone",
+//     "along",
+//     "alter",
+//     "among",
+//     "anger",
+//     "Angle",
+//     "angry",
+//     "apart",
+//     "apple",
+//     "apply",
+//     "arena",
+//     "argue",
+//     "arise",
+//     "array",
+//     "aside",
+//     "asset",
+//     "audio",
+//     "audit",
+//     "avoid",
+//     "award",
+//     "aware",
 let words = [
+    {
+        "word": "about",
+        "clue1": "This word is a preposition",
+        "clue2": "This word means the subject of",
+        "clue3": "I was very concerned ____ you after you fell down and broke your arm",
+
+    },
+    {
+        "word": "above",
+        "clue1": "This word can be used as a preposition or adverb ",
+        "clue2": "This word is used to indicate what is higer than you",
+        "clue3": "The bird flew high ____ me",
+
+    },
+    {
+        "word": "abuse",
+        "clue1": "This word is a verb.",
+        "clue2": "This word means that you misues something or you take advantage of it",
+        "clue3": "Sometimes people _____ there power",
+
+    },
+    {
+        "word": "actor",
+        "clue1": "This word is a noun.",
+        "clue2": "To behave in a way that is not usual to you",
+        "clue3": "My friend is a great _____ on stage",
+        
+    },
     {
         "word": "horse",
         "clue1": "It's a land mammal.",
