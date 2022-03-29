@@ -14,17 +14,10 @@ for (let i = 65; i <= 90; i++) { //all alphabets
 $('#modal').hide()
 $(".headerIcon").hide()
 $("#showAllClues").hide()
+
 let pointCout = 100
-let wordObject = words[Math.floor(Math.random() * words.length)]
-let word = wordObject.word
-let clue1 = wordObject.clue1
-let clue2 = wordObject.clue2
-let clue3 = wordObject.clue3
-console.log(word, "\n", clue1, "\n", clue2, "\n", clue3)
+let randomIndex = Math.floor(Math.random() * words.length)
 $("#clues").hide()
-$("#clue1").html(clue1).hide()
-$("#clue2").html(clue2).hide()
-$("#clue3").html(clue3).hide()
 $("#showClue1").hide()
 $("#showClue2").hide()
 $("#showClue3").hide()
@@ -37,6 +30,22 @@ let autoshow = false
 $(".message").hide()
 $("#currentTile").val("1")
 $("#game").hide()
+let url = new URL(window.location.href)
+let search_params = url.searchParams
+if (search_params.has('id') && words.length > search_params.get('id')) {
+    randomIndex = search_params.get('id')
+    $("#game").show()
+    $("#form").hide()
+    $("#tile1").focus()
+}
+let wordObject = words[randomIndex]
+let word = wordObject.word
+let clue1 = wordObject.clue1
+let clue2 = wordObject.clue2
+let clue3 = wordObject.clue3
+$("#clue1").html(clue1).hide()
+$("#clue2").html(clue2).hide()
+$("#clue3").html(clue3).hide()
 $("#submit").on("click", () => {
     // names.forEach((value) => {
     //     if ($(`input[value='${value}']:checked`).val()) {
@@ -126,11 +135,8 @@ function everything(keyPressed, keyCode, event = null) {
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
             let lines = ((displayText.split("<br>")).length)
-            text = `${lines} Tries\n
-                ${pointCout} Points\n`
-                + text +
-                "\nWant To Play Wordle? Go To: https://arjunycoding.github.io/wordle/"
-            console.log(text)
+            text = `${lines} Tries \n ${pointCout} Points\n` + text + `\nWant To Play The Same Wordle? Go To: https://arjunycoding.github.io/wordle/?id=${randomIndex}`
+            console.log(`${lines} Tires \nBefore \n${pointCout} Points\n More`)
             $("#textMessage").val(text)
             setTimeout(() => {
                 $("input").attr("disabled", "disabled")

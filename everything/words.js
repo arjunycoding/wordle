@@ -672,9 +672,30 @@
 let words = [
     {
         "word": "horse",
-        "clue1": "It's a land mammal",
-        "clue2": "It has four legs, a tail and is 4.82 feet tall",
-        "clue3": "My and my brother love to go ____back riding",
+        "clue1": "It's a land mammal.",
+        "clue2": "It has four legs, a tail and is 4.82 feet tall.",
+        "clue3": "Me and my brother love to go ____back riding.",
+
+    },
+    {
+        "word": "crane",
+        "clue1": "It's a bird.",
+        "clue2": "It has two legs and a long neck.",
+        "clue3": "In Japan the ____ is considered a holy bird.",
+
+    },
+    {
+        "word": "brick",
+        "clue1": "Red in color and is rough",
+        "clue2": "It is not living and is in a rectangular shape.",
+        "clue3": "People commonly think that ____ is used to build houses.",
+
+    },
+    {
+        "word": "young",
+        "clue1": "It's an adjective.",
+        "clue2": "It's usually used to describe kids",
+        "clue3": "Kids are ____ than adults",
 
     }
 ]
