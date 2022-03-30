@@ -16,6 +16,7 @@ $(".headerIcon").hide()
 $("#showAllClues").hide()
 
 let pointCout = 100
+let totalPoints = pointCout
 let randomIndex = Math.floor(Math.random() * words.length)
 $("#clues").hide()
 $("#showClue1").hide()
@@ -65,8 +66,11 @@ $("#submit").on("click", () => {
                 autoshow = true
             } else if (value == "medium") {
                 pointCout = 150
+                totalPoints = pointCout
+
             } else if (value == "hard") {
                 pointCout = 200
+                totalPoints = pointCout
                 $("#showClue1").remove()
                 $("#showClue2").remove()
                 $("#showClue3").remove()
@@ -142,7 +146,7 @@ function everything(keyPressed, keyCode, event = null) {
                 $("input").attr("disabled", "disabled")
                 $('#modal').click()
                 $(".modal-body").html(
-                    `You Got It!<br> The word was ${word}<br> You earned ${pointCout} Points <br>Here is your attempt: <br> ${displayText}`
+                    `You Got It!<br> The word was ${word}<br> You earned ${pointCout}/${totalPoints} Points <br>Here is your attempt: <br> ${displayText}`
                 )
             }, 3000)
         } else { // when the guess is wrong

@@ -501,7 +501,6 @@
 // let mathwords = [
 //     "angle",
 //     "carry",
-//     "circle",
 //     "curve",
 //     "eight",
 //     "equal",
@@ -671,100 +670,131 @@
 
 
 
-//     "acute",
-//     "admit",
-//     "adopt",
-//     "adult",
-//     "after",
-//     "again",
-//     "agent",
-//     "agree",
-//     "ahead",
-//     "alarm",
-//     "album",
-//     "alert",
-//     "alike",
-//     "alive",
-//     "allow",
-//     "alone",
-//     "along",
-//     "alter",
-//     "among",
-//     "anger",
-//     "Angle",
-//     "angry",
-//     "apart",
-//     "apple",
-//     "apply",
-//     "arena",
-//     "argue",
-//     "arise",
-//     "array",
-//     "aside",
-//     "asset",
-//     "audio",
-//     "audit",
-//     "avoid",
-//     "award",
-//     "aware",
 let words = [
     {
         "word": "about",
         "clue1": "This word is a preposition",
         "clue2": "This word means the subject of",
-        "clue3": "I was very concerned ____ you after you fell down and broke your arm",
+        "clue3": "I was very concerned _____ you after you fell down and broke your arm"
 
     },
     {
         "word": "above",
         "clue1": "This word can be used as a preposition or adverb ",
         "clue2": "This word is used to indicate what is higer than you",
-        "clue3": "The bird flew high ____ me",
+        "clue3": "The bird flew high _____ me"
 
     },
     {
         "word": "abuse",
         "clue1": "This word is a verb.",
         "clue2": "This word means that you misues something or you take advantage of it",
-        "clue3": "Sometimes people _____ there power",
+        "clue3": "Sometimes people ______ there power"
 
     },
     {
         "word": "actor",
         "clue1": "This word is a noun.",
         "clue2": "To behave in a way that is not usual to you",
-        "clue3": "My friend is a great _____ on stage",
-        
+        "clue3": "My friend is a great _____ on stage"
+
+    },
+    {
+        "word": "acute",
+        "clue1": "This word is related to math.",
+        "clue2": "This word can be used to descibe shapes",
+        "clue3": "_____ angles are always less than 90°"
+
+    },
+    {
+        "word": "admit",
+        "clue1": "This word is related to hospitals",
+        "clue2": "A synonym for this word is confess",
+        "clue3": "I was _____ed into the hopsital"
+
+    },
+    {
+        "word": "adopt",
+        "clue1": "This word means to bring into the family",
+        "clue2": "This word is related to orphanage",
+        "clue3": "My family _____ from an orphanage"
+
+    },
+    {
+        "word": "adult",
+        "clue1": "This word is someone who is fully matured",
+        "clue2": "This word is the oppiste of kid",
+        "clue3": "You have to be 18 to be an _____"
+
+    },
+    {
+        "word": "after",
+        "clue1": "This word means at a later time",
+        "clue2": "This word is the opposite of before",
+        "clue3": "I will compleate my homework _____ some time"
+
     },
     {
         "word": "horse",
         "clue1": "It's a land mammal.",
         "clue2": "It has four legs, a tail and is 4.82 feet tall.",
-        "clue3": "Me and my brother love to go ____back riding.",
+        "clue3": "Me and my brother love to go _____back riding."
 
     },
     {
         "word": "crane",
         "clue1": "It's a bird.",
         "clue2": "It has two legs and a long neck.",
-        "clue3": "In Japan the ____ is considered a holy bird.",
+        "clue3": "In Japan the _____ is considered a holy bird."
 
     },
     {
         "word": "brick",
         "clue1": "Red in color and is rough",
         "clue2": "It is not living and is in a rectangular shape.",
-        "clue3": "People commonly think that ____ is used to build houses.",
+        "clue3": "People commonly think that _____ is used to build houses."
 
     },
     {
         "word": "young",
         "clue1": "It's an adjective.",
         "clue2": "It's usually used to describe kids",
-        "clue3": "Kids are ____ than adults",
+        "clue3": "Kids are _____ than adults"
 
     }
 ]
-// Angry: one of your emotins - 10
-// Angry: It's an unproductive emotion too have - 20
-// Angry: "I was ____ at my brother for walking into my room."- 50
+    // Angry: one of your emotins - 10
+    // Angry: It's an unproductive emotion too have - 20
+    // Angry: "I was _____ at my brother for walking into my room."- 50
+    //     "after",
+    //     "again",
+    //     "agent",
+    //     "agree",
+    //     "ahead",
+    //     "alarm",
+    //     "album",
+    //     "alert",
+    //     "alike",
+    //     "alive",
+    //     "allow",
+    //     "alone",
+    //     "along",
+    //     "alter",
+    //     "among",
+    //     "anger",
+    //     "Angle",
+    //     "angry",
+    //     "apart",
+    //     "apple",
+    //     "apply",
+    //     "arena",
+    //     "argue",
+    //     "arise",
+    //     "array",
+    //     "aside",
+    //     "asset",
+    //     "audio",
+    //     "audit",
+    //     "avoid",
+    //     "award",
+    //     "aware",
