@@ -501,7 +501,6 @@ let words = [
 let mathwords = [
     "angle",
     "carry",
-    "circle",
     "curve",
     "eight",
     "equal",
