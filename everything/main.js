@@ -6,7 +6,6 @@ on shareing exact word
 topics expand
 
 */
-
 let validKeys = [] //backspace & enter
 for (let i = 65; i <= 90; i++) { //all alphabets
     validKeys.push(i)
@@ -14,7 +13,12 @@ for (let i = 65; i <= 90; i++) { //all alphabets
 $('#modal').hide()
 $(".headerIcon").hide()
 $("#showAllClues").hide()
-
+if (!(localStorage.getItem("table") == "")) {
+    console.log(localStorage.getItem("table"))
+    $("table").html(localStorage.getItem("table"))
+} else {
+    localStorage.setItem("table", "")
+}
 let pointCout = 100
 let totalPoints = pointCout
 let randomIndex = Math.floor(Math.random() * words.length)
@@ -86,7 +90,7 @@ function everything(keyPressed, keyCode, event = null) {
     let currentTile = parseInt($("#currentTile").val())
     let inputId = currentTile < 1 ? "hiddenTile" : "tile" + currentTile
     let nextTileNumber = parseInt($("#nextTile").val())
-    console.log(autoshow)
+    console.log(currentTile)
     if (autoshow) {
         if (inputId == "tile11") {
             $('#showClue1').click()
@@ -155,12 +159,9 @@ function everything(keyPressed, keyCode, event = null) {
                     if (isReal) {
 
                         let i = nextTileNumber - 5
-                        let seconds = 50
                         result.positions.forEach((value) => {
-                            // setTimeout(() => {
                             $(`#tile${i}`).addClass(value)
                             $(`#tile${i}`).addClass("flip")
-                            // }, seconds)
                             $(`#tile${i}`).prop('disabled', true)
                             document.getElementById(`tile${i}`).readOnly = true
                             // Add Keyboard Colors
@@ -213,6 +214,7 @@ function everything(keyPressed, keyCode, event = null) {
                         }, 3000)
                     }
                 })
+                localStorage.setItem("table", $("table").html())
         }
     } else if (keyCode == 8) { // DELETE key pressed
         //     then we have to use nextTile to find while tiles to delete the values from
@@ -274,6 +276,7 @@ $("#showClue3").on("click", () => {
     $("#ponitCount").html(pointCout)
 
 })
+
 
 
 $("#showAllClues").on("click", () => {
