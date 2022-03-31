@@ -63,7 +63,7 @@ function everything(keyPressed, keyCode, event = null) {
             let stopat = i - 5
             for (; i > stopat; i--) {
                 $(`#tile${i}`).addClass("right")
-                $(`#tile${i}`).addClass("flip")
+                $(`#tile${i}`).addClass("speacialFlip")
                 $(`.letter:contains(${($(`#tile${i}`).val()).toUpperCase()})`).addClass("right")
             }
             pop()
