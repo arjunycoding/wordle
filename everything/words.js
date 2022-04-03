@@ -696,7 +696,7 @@ let words = [
         "word": "actor",
         "clue1": "This word is a noun.",
         "clue2": "To behave in a way that is not usual to you",
-        "clue3": "My friend is a great _____ on stage"
+        "clue3": "Will Smith is the one of the greatst _____ in Hollywood"
 
     },
     {
@@ -717,7 +717,7 @@ let words = [
         "word": "adopt",
         "clue1": "This word means to bring into the family",
         "clue2": "This word is related to orphanage",
-        "clue3": "My family _____ from an orphanage"
+        "clue3": "My family _____ed a child from a orphanage"
 
     },
     {
@@ -732,6 +732,34 @@ let words = [
         "clue1": "This word means at a later time",
         "clue2": "This word is the opposite of before",
         "clue3": "I will compleate my homework _____ some time"
+
+    },
+    {
+        "word": "again",
+        "clue1": "This word is a adverb",
+        "clue2": "This word means to repeat",
+        "clue3": "My homework got ruined so I hvae to do it _____"
+
+    },
+    {
+        "word": "agent",
+        "clue1": "This word is a noun",
+        "clue2": "This word is relateted to spys",
+        "clue3": "Spys or _____s have to be smart and cunning"
+
+    },
+    {
+        "word": "agree",
+        "clue1": "This word is a verb",
+        "clue2": "This word means to come to a comprise",
+        "clue3": "We had to _____ on what theme was best for the slideshow"
+
+    },
+    {
+        "word": "ahead",
+        "clue1": "",
+        "clue2": "This word means something thats in front of you",
+        "clue3": "We had to _____ on what theme was best for the slideshow"
 
     },
     {
@@ -765,11 +793,7 @@ let words = [
 ]
     // Angry: one of your emotins - 10
     // Angry: It's an unproductive emotion too have - 20
-    // Angry: "I was _____ at my brother for walking into my room."- 50
-    //     "after",
-    //     "again",
-    //     "agent",
-    //     "agree",
+    // Angry: """"I was _____ at my brother for walking into my room.""""- 50
     //     "ahead",
     //     "alarm",
     //     "album",

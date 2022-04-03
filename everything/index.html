@@ -20,7 +20,7 @@
 
 <body>
     <div id="header">
-        <h1 class="heading">Wordle</h1>
+        <h1 class="heading">Cludle</h1>
     </div>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <img src="images/question.png" alt="question mark circle" width="30px">
@@ -49,10 +49,9 @@
                         Computers
                     </label>
                 </div>
-
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subject" id="random" value="random" checked>
-                    <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="subject" id="random" value="random">
+                    <label class="form-check-label" for="random">
                         Random
                     </label>
                 </div>
@@ -76,9 +75,43 @@
                 <p>Hard: You will have no hints availbe.</p>
             </div>
         </div>
-        </p>
+    </p>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">How To Play</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <b>General</b> <br> <br>
+                You have 6 tires to guess the word.<br>
+                You must enter a five letter word. Click enter to submit. <br> <br>
+                <b>Word Evaluation</b> <br> 
+                After you click enter the word will be analysed and the letters color will change depending on if and where they are placed<br>
+                If the letter lights up gray, the letter is not in the word <br>
+                If the letter lights up yellow, the letter is in the word but not in the right spot <br>
+                If the letter lights up green, the letter is in the word and in the right spot <br><br>
+                <b>Examples:</b><br>
+                <img src="images/grayEx.png" alt="word with gray letter" width="300"><br>
+                The letter J is not in the word <br><br>
+                <img src="images/yellowEx.png" alt="word with yellow letter" width="300"><br>
+                The letter R is in the word but in the worng spot<br><br>
+                <img src="images/greenEx.png" alt="word with green letter" width="300"><br>
+                The letter M is in the word and is in the right spot<br><br>
+                <b>Points</b> <br>
+                The more tries you take the less points you earn.<br>
+                The more clues you reveal the less points you earn.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-    </div>
+</div>
     <div id="game">
         <div id="hiddenDiv">
             <input autocomplete="off" readonly type="text" id="hiddenTile" class="guess">
@@ -97,40 +130,6 @@
         <!-- Button trigger modal -->
     
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">How To Play</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <b>General</b> <br> <br>
-                        You have 6 tires to guess the word.<br>
-                        You must enter a five letter word. Click enter to submit. <br> <br>
-                        <b>Word Evaluation</b> <br> 
-                        After you click enter the word will be analysed and the letters color will change depending on if and where they are placed<br>
-                        If the letter lights up gray, the letter is not in the word <br>
-                        If the letter lights up yellow, the letter is in the word but not in the right spot <br>
-                        If the letter lights up green, the letter is in the word and in the right spot <br><br>
-                        <b>Examples:</b><br>
-                        <img src="images/grayEx.png" alt="word with gray letter" width="300"><br>
-                        The letter J is not in the word <br><br>
-                        <img src="images/yellowEx.png" alt="word with yellow letter" width="300"><br>
-                        The letter R is in the word but in the worng spot<br><br>
-                        <img src="images/greenEx.png" alt="word with green letter" width="300"><br>
-                        The letter M is in the word and is in the right spot<br><br>
-                        <b>Points</b> <br>
-                        The more tries you take the less points you earn.<br>
-                        The more clues you reveal the less points you earn.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <button type="button" class="btn btn-primary" id="showClue1">Show Clue 1</button>
         <button type="button" class="btn btn-primary" id="showClue2">Show Clue 2</button>
         <button type="button" class="btn btn-primary" id="showClue3">Show Clue 3</button>

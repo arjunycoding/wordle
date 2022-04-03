@@ -13,15 +13,9 @@ for (let i = 65; i <= 90; i++) { //all alphabets
 $('#modal').hide()
 $(".headerIcon").hide()
 $("#showAllClues").hide()
-if (!(localStorage.getItem("table") == "")) {
-    console.log(localStorage.getItem("table"))
-    $("table").html(localStorage.getItem("table"))
-} else {
-    localStorage.setItem("table", "")
-}
 let pointCout = 100
 let totalPoints = pointCout
-let randomIndex = Math.floor(Math.random() * words.length)
+let randomIndex
 $("#clues").hide()
 $("#showClue1").hide()
 $("#showClue2").hide()
@@ -39,9 +33,13 @@ let url = new URL(window.location.href)
 let search_params = url.searchParams
 if (search_params.has('id') && words.length > search_params.get('id')) {
     randomIndex = search_params.get('id')
-    $("#game").show()
-    $("#form").hide()
-    $("#tile1").focus()
+    console.log(search_params.get('id'))
+} else if (localStorage.getItem("id") != undefined) {
+    randomIndex = parseInt(localStorage.getItem("id"))
+    console.log(typeof(randomIndex))
+    console.log(parseInt(localStorage.getItem("id")))
+} else {
+    randomIndex = Math.floor(Math.random() * words.length)
 }
 let wordObject = words[randomIndex]
 let word = wordObject.word
@@ -53,36 +51,36 @@ $("#clue2").html(clue2).hide()
 $("#clue3").html(clue3).hide()
 $("#submit").on("click", () => {
     // names.forEach((value) => {
-    //     if ($(`input[value='${value}']:checked`).val()) {
-    //         if (value == "math") {
-    //             word = mathwords[Math.floor(Math.random() * mathwords.length)]
-    //             console.log(word)
-    //         } else if (value == "science") {
-    //             word = sciencewords[Math.floor(Math.random() * sciencewords.length)]
-    //         } else if (value == "computers") {
-    //             word = computerwords[Math.floor(Math.random() * computerwords.length)]
-    //         }
-    //     }
-    // })
-    id.forEach((value) => {
-        if ($(`input[id='${value}']:checked`).val()) {
-            if (value == "easy") {
-                autoshow = true
-            } else if (value == "medium") {
-                pointCout = 150
-                totalPoints = pointCout
-
-            } else if (value == "hard") {
-                pointCout = 200
-                totalPoints = pointCout
-                $("#showClue1").remove()
-                $("#showClue2").remove()
-                $("#showClue3").remove()
-            }
-        }
-    })
-    $("#game").show()
-    $("#form").hide()
+        //     if ($(`input[value='${value}']:checked`).val()) {
+            //         if (value == "math") {
+                //             word = mathwords[Math.floor(Math.random() * mathwords.length)]
+                //             console.log(word)
+                //         } else if (value == "science") {
+                    //             word = sciencewords[Math.floor(Math.random() * sciencewords.length)]
+                    //         } else if (value == "computers") {
+                        //             word = computerwords[Math.floor(Math.random() * computerwords.length)]
+                        //         }
+                        //     }
+                        // })
+                        id.forEach((value) => {
+                            if ($(`input[id='${value}']:checked`).val()) {
+                                if (value == "easy") {
+                                    autoshow = true
+                                } else if (value == "medium") {
+                                    pointCout = 150
+                                    totalPoints = pointCout
+                                    
+                                } else if (value == "hard") {
+                                    pointCout = 200
+                                    totalPoints = pointCout
+                                    $("#showClue1").remove()
+                                    $("#showClue2").remove()
+                                    $("#showClue3").remove()
+                                }
+                            }
+                        })
+                        $("#game").show()
+                            $("#form").hide()
     $("#tile1").focus()
 })
 let inputId = $(this).attr("")
@@ -140,6 +138,7 @@ function everything(keyPressed, keyCode, event = null) {
             $("#showClue2").hide()
             $("#showClue3").hide()
             pop()
+            localStorage.setItem('id', Math.floor(Math.random() * words.length))
             text += "🟩🟩🟩🟩🟩"
             displayText += "🟩🟩🟩🟩🟩"
             let lines = ((displayText.split("<br>")).length)
@@ -202,6 +201,7 @@ function everything(keyPressed, keyCode, event = null) {
 
                         if (nextTile == "#tile31") {
                             $(".alert-primary").fadeIn(1500).text("You did not get the word 😟. The word was " + word)
+                            localStorage.setItem('id', Math.floor(Math.random() * words.length))
                         }
                         pointCout -= 10
 
@@ -214,7 +214,6 @@ function everything(keyPressed, keyCode, event = null) {
                         }, 3000)
                     }
                 })
-                localStorage.setItem("table", $("table").html())
         }
     } else if (keyCode == 8) { // DELETE key pressed
         //     then we have to use nextTile to find while tiles to delete the values from
