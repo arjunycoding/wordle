@@ -18,11 +18,7 @@ $("#showAllClues").hide()
 let pointCout = 100
 let totalPoints = pointCout
 let randomIndex = Math.floor(Math.random() * words.length)
-$("#clues").hide()
-$("#showClue1").hide()
-$("#showClue2").hide()
-$("#showClue3").hide()
-$("#singleClue").hide()
+let word = words[randomIndex]
 let text = ""
 let displayText = ""
 let names = ["math", "science", "random", "computers"]
@@ -30,57 +26,6 @@ let id = ["easy", "medium", "hard"]
 let autoshow = false
 $(".message").hide()
 $("#currentTile").val("1")
-$("#game").hide()
-let url = new URL(window.location.href)
-let search_params = url.searchParams
-if (search_params.has('id') && words.length > search_params.get('id')) {
-    randomIndex = search_params.get('id')
-    $("#game").show()
-    $("#form").hide()
-    $("#tile1").focus()
-}
-let wordObject = words[randomIndex]
-let word = wordObject.word
-let clue1 = wordObject.clue1
-let clue2 = wordObject.clue2
-let clue3 = wordObject.clue3
-$("#clue1").html(clue1).hide()
-$("#clue2").html(clue2).hide()
-$("#clue3").html(clue3).hide()
-$("#submit").on("click", () => {
-    // names.forEach((value) => {
-    //     if ($(`input[value='${value}']:checked`).val()) {
-    //         if (value == "math") {
-    //             word = mathwords[Math.floor(Math.random() * mathwords.length)]
-    //             console.log(word)
-    //         } else if (value == "science") {
-    //             word = sciencewords[Math.floor(Math.random() * sciencewords.length)]
-    //         } else if (value == "computers") {
-    //             word = computerwords[Math.floor(Math.random() * computerwords.length)]
-    //         }
-    //     }
-    // })
-    id.forEach((value) => {
-        if ($(`input[id='${value}']:checked`).val()) {
-            if (value == "easy") {
-                autoshow = true
-            } else if (value == "medium") {
-                pointCout = 150
-                totalPoints = pointCout
-
-            } else if (value == "hard") {
-                pointCout = 200
-                totalPoints = pointCout
-                $("#showClue1").remove()
-                $("#showClue2").remove()
-                $("#showClue3").remove()
-            }
-        }
-    })
-    $("#game").show()
-    $("#form").hide()
-    $("#tile1").focus()
-})
 let inputId = $(this).attr("")
 function everything(keyPressed, keyCode, event = null) {
     let currentTile = parseInt($("#currentTile").val())

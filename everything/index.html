@@ -22,63 +22,10 @@
     <div id="header">
         <h1 class="heading">Wordle</h1>
     </div>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="images/question.png" alt="question mark circle" width="30px">
-        </button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img src="images/question.png" alt="question mark circle" width="30px">
+    </button>
     <br>
-    <div class="card mb-3" style="max-width: 700px;" id="form">
-        <div class="card-header">Choose Your Topic</div>
-        <div class="card-body">
-            <p class="card-text">
-            <div class="form-check">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subject" id="math" value="math" checked>
-                    <label class="form-check-label" for="math">
-                        Math
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subject" id="science" value="option2">
-                    <label class="form-check-label" for="science">
-                        Science & Inventors
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subject" id="computers" value="computers">
-                    <label class="form-check-label" for="computers">
-                        Computers
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="subject" id="random" value="random" checked>
-                    <label class="form-check-label">
-                        Random
-                    </label>
-                </div>
-            </div>
-            <br>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="easy" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="easy">Easy</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="medium" autocomplete="off">
-                <label class="btn btn-outline-primary" for="medium">Medium</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="hard" autocomplete="off">
-                <label class="btn btn-outline-primary" for="hard">Hard</label>
-            </div> <br> <br>
-            <button type="button" class="btn btn-primary" id="submit">Done!</button> <br><br>
-            <div class="card-footer">
-                <p>Easy: You will automatcially get hints. Remember the more hints you get the less points you'll earn
-                </p>
-                <p>Meduim: You will have the opitain to get a hint.</p>
-                <p>Hard: You will have no hints availbe.</p>
-            </div>
-        </div>
-        </p>
-    </div>
-    </div>
     <div id="game">
         <div id="hiddenDiv">
             <input autocomplete="off" readonly type="text" id="hiddenTile" class="guess">
@@ -95,7 +42,7 @@
         <div class="alert alert-primary message" id="lose" role="alert">
         </div>
         <!-- Button trigger modal -->
-    
+
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,8 +56,9 @@
                         <b>General</b> <br> <br>
                         You have 6 tires to guess the word.<br>
                         You must enter a five letter word. Click enter to submit. <br> <br>
-                        <b>Word Evaluation</b> <br> 
-                        After you click enter the word will be analysed and the letters color will change depending on if and where they are placed<br>
+                        <b>Word Evaluation</b> <br>
+                        After you click enter the word will be analysed and the letters color will change depending on
+                        if and where they are placed<br>
                         If the letter lights up gray, the letter is not in the word <br>
                         If the letter lights up yellow, the letter is in the word but not in the right spot <br>
                         If the letter lights up green, the letter is in the word and in the right spot <br><br>
@@ -131,32 +79,9 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary" id="showClue1">Show Clue 1</button>
-        <button type="button" class="btn btn-primary" id="showClue2">Show Clue 2</button>
-        <button type="button" class="btn btn-primary" id="showClue3">Show Clue 3</button>
         <div id="tableAndKeys">
             <!-- <div class="row justify-content-evenly"> -->
             <!-- <div class="col-4"> -->
-
-            <button type="button" class="btn btn-primary" id="showAllClues">Show All Clues</button>
-            <div id="clues" class="card border-light mb-3" style="max-width: 18rem;">
-                <div class="card-header">Clues</div>
-                <div class="card-body">
-                    <p class="card-text">
-                    <ul>
-                        <li id="clue1"></li>
-                        <li id="clue2"></li>
-                        <li id="clue3"></li>
-                    </ul>
-                    </p>
-                </div>
-            </div>
-            <div id="singleClue" class="card border-light mb-3" style="max-width: 18rem;">
-                <div class="card-header">Clues</div>
-                <div class="card-body">
-                    <p class="card-text" id="clue"></p>
-                </div>
-            </div>
             <!-- </div> -->
             <div id="main">
                 <table>
